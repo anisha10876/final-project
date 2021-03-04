@@ -47,17 +47,12 @@ class UserController extends Controller
         if(Auth::attempt($cred)){
             $user=User::where('email',$request->email)->first();
 
-            foreach($user->roles as $urole)
-            {
-                if($urole->title== 'Admin'){
-                    return redirect()->route('admindashboard');
-                }
-                else{
-                    return redirect()->route('home');
-                }
-
+            if($user->roles->title== 'Admin'){
+                return redirect()->route('admindashboard');
             }
-
+            else{
+                return redirect()->route('home');
+            }
 
     }else
     {

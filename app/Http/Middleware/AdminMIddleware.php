@@ -18,13 +18,12 @@ class AdminMIddleware
     public function handle($request, Closure $next)
     {
 
-        foreach(Auth::user()->roles as $urole){
-            if($urole->title == 'Admin'){
+            if(Auth::user()->roles->title == 'Admin'){
                 return $next($request);
             }
             else{
                 return redirect()->route('home');
             }
         }
-    }
+
 }
