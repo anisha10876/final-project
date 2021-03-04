@@ -26,10 +26,32 @@ Route::get('/team','Frontend\HomePageController@getteam')->name('team');
 Route::get('/register','UserController@register')->name('registerpage')->middleware('guestuser');
 Route::get('/login' ,'UserController@login')->name('loginpage')->middleware('guestuser');
 Route::post('/register','UserController@postregister')->name('postregister');
-Route::post('/login','UserController@postlogin')->name('postlogin');
+Route::post('/login','UserController@postlogin')->name('login');
 
 Route::get('/logout','UserController@logout')->name('logout');
 
+
+
+######search#####
+Route::get('/search','backend\CarController@searchcar')->name('searchcar');
+
+// filter with brands
+Route::get('/carbrand/{id}','backend\CarController@carbrand')->name('carbrand');
+
+Route::get('/filtercars','backend\CarController@filtercars')->name('filtercars');
+
+
+
+
+
+############cardetail#########
+Route::get('/cardetails/{id}','backend\CarController@cardetails')->name('cardetails');
+
+
+Route::group([
+    'middleware' => ['auth','admin']
+],
+function(){
 
 
 Route::get('/admin','backend\AdminController@dashboard')->name('admindashboard');
@@ -43,7 +65,7 @@ Route::get('/admin/brand_delete/{id}','backend\BrandController@getdeletebrand')-
 
 
 ######cars####
-Route::get('/carsadmin','backend\AdminController@carpage')->name('carsadmin');
+Route::get('/carsadmin','backend\AdminController@carpage')->middleware(['auth','admin'])->name('carsadmin');
 Route::get('/addcar','backend\AdminController@addcar')->name('add_car');
 Route::post('/addcarsubmit','backend\AdminController@addcarsubmit')->name('addcarsubmit');
 
@@ -61,44 +83,39 @@ Route::post('/editfaqsubmit/{id}','backend\AdminController@editfaqsubmit')->name
 
 Route::get('/deletefaq/{id}','backend\AdminController@deletefaq')->name('deletefaq');
 
-######search#####
-Route::get('/search','backend\CarController@searchcar')->name('searchcar');
-
-// filter with brands
-Route::get('/carbrand/{id}','backend\CarController@carbrand')->name('carbrand');
-
-Route::get('/filtercars','backend\CarController@filtercars')->name('filtercars');
-
-
-
-#########teams#########
-Route::get('/teams','backend\TeamController@teams')->name('teams');
-
-Route::get('/addteam','backend\TeamController@addteam')->name('addteam');
-Route::post('/addteamsubmit','backend\TeamController@addteamsubmit')->name('addteamsubmit');
-
-Route::get('/editteam/{id}','backend\TeamController@editteam')->name('editteam');
-Route::post('/editteamsubmit/{id}','backend\TeamController@editteamsubmit')->name('editteamsubmit');
-
-Route::get('/deleteteam/{id}','backend\TeamController@deleteteam')->name('deleteteam');
-
-###########testomonials###############
-Route::get('/testomonials','backend\TestomonialController@testomonials')->name('testomonials');
-Route::get('/addtestomonials','backend\TestomonialController@addtestomonials')->name('addtestomonials');
-Route::post('/addtestomonialssubmit','backend\TestomonialController@addtestomonialssubmit')->name('addtestomonialssubmit');
-Route::get('/edittestomonial/{id}','backend\TestomonialController@edittestomonial')->name('edittestomonial');
-Route::post('/edittestomonialssubmit/{id}','backend\TestomonialController@edittestomonialssubmit')->name('edittestomonialssubmit');
-Route::get('/deletetestomonial/{id}','backend\TestomonialController@deletetestomonial')->name('deletetestomonial');
+    // blogs#########
+    Route::get('/blogs','backend\BlogController@blogs')->name('blogs');
+    Route::get('/addblog','backend\BlogController@addblog')->name('addblog');
+    Route::post('/addblogsubmit','backend\BlogController@addblogsubmit')->name('addblogsubmit');
+    Route::get('/editblog/{id}','backend\BlogController@editblog')->name('editblog');
+    Route::post('/editblogsubmit/{id}','backend\BlogController@editblogsubmit')->name('editblogsubmit');
+    Route::get('/deleteblog/{id}','backend\BlogController@deleteblog')->name('deleteblog');
 
 
-############cardetail#########
-Route::get('/cardetails/{id}','backend\CarController@cardetails')->name('cardetails');
+    #########teams#########
+    Route::get('/teams','backend\TeamController@teams')->name('teams');
+
+    Route::get('/addteam','backend\TeamController@addteam')->name('addteam');
+    Route::post('/addteamsubmit','backend\TeamController@addteamsubmit')->name('addteamsubmit');
+
+    Route::get('/editteam/{id}','backend\TeamController@editteam')->name('editteam');
+    Route::post('/editteamsubmit/{id}','backend\TeamController@editteamsubmit')->name('editteamsubmit');
+
+    Route::get('/deleteteam/{id}','backend\TeamController@deleteteam')->name('deleteteam');
+
+    ###########testomonials###############
+    Route::get('/testomonials','backend\TestomonialController@testomonials')->name('testomonials');
+    Route::get('/addtestomonials','backend\TestomonialController@addtestomonials')->name('addtestomonials');
+    Route::post('/addtestomonialssubmit','backend\TestomonialController@addtestomonialssubmit')->name('addtestomonialssubmit');
+    Route::get('/edittestomonial/{id}','backend\TestomonialController@edittestomonial')->name('edittestomonial');
+    Route::post('/edittestomonialssubmit/{id}','backend\TestomonialController@edittestomonialssubmit')->name('edittestomonialssubmit');
+    Route::get('/deletetestomonial/{id}','backend\TestomonialController@deletetestomonial')->name('deletetestomonial');
 
 
-##########blogs#################
-Route::get('/blogs','backend\BlogController@blogs')->name('blogs');
-Route::get('/addblog','backend\BlogController@addblog')->name('addblog');
-Route::post('/addblogsubmit','backend\BlogController@addblogsubmit')->name('addblogsubmit');
-Route::get('/editblog/{id}','backend\BlogController@editblog')->name('editblog');
-Route::post('/editblogsubmit/{id}','backend\BlogController@editblogsubmit')->name('editblogsubmit');
-Route::get('/deleteblog/{id}','backend\BlogController@deleteblog')->name('deleteblog');
+    // Roles#############
+    Route::get('/roles','backend\RoleController@roles')->name('roles');
+    Route::get('/addroles','backend\RoleController@addroles')->name('addroles');
+    Route::post('/addrolessubmit','backend\RoleController@addrolessubmit')->name('addrolessubmit');
+}
+
+);

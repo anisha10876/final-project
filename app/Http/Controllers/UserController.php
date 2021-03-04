@@ -15,6 +15,7 @@ class UserController extends Controller
     }
 
     public function login(){
+
         return view('user.login');
     }
 
@@ -30,7 +31,7 @@ class UserController extends Controller
         $user->name=$request->name;
         $user->email=$request->email;
         $user->password=Hash::make($request->password);
-        $user->role_id = 2;
+        $user->role_id = 1;
         $user->save();
         return redirect()->route('loginpage');
     }
@@ -45,15 +46,25 @@ class UserController extends Controller
 //        dd($cred);
         if(Auth::attempt($cred)){
             $user=User::where('email',$request->email)->first();
-            if($user->role_id==1){
-                return redirect()->route('admindashboard');
-            }else{
-                return redirect()->route('home');
+
+            foreach($user->roles as $urole)
+            {
+                if($urole->title== 'Admin'){
+                    return redirect()->route('admindashboard');
+                }
+                else{
+                    return redirect()->route('home');
+                }
+
             }
-        }else{
-            return redirect()->back()->with('error','invalid cred.');
-        }
+
+
+    }else
+    {
+        return redirect()->back()->with('error','invalid cred.');
     }
+}
+
 
     public function logout(){
         if(Auth::check()) {

@@ -56,7 +56,7 @@
                         </li>
                         <li><a href="{{route('contact')}}">Contact</a></li>
                         @guest
-                        <li><a href="{{route('postlogin')}}">login</a></li>
+                        <li><a href="{{route('login')}}">login</a></li>
                         @else
                         <li><a href="{{route('logout')}}">logout</a></li>
                         @endguest

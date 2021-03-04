@@ -29,7 +29,7 @@
             @if(session()->has('error'))
                 <spam>{{ session()->get('error') }}</spam>
             @endif
-            <form class="" method="post" action="{{route('postlogin')}}">
+            <form class="" method="post" action="{{route('login')}}">
                 @csrf
 
                 <div class="form-group">

@@ -90,10 +90,11 @@
                     <tr data-row="{{ $loop->iteration }}">
                         <th>{{ $loop->iteration }}</th>
                         <th><input type="text" value="{{ $cspec->title }}" name="spec[{{ $cspec->id }}][title]" class="form-control"></th>
-                        <th><input type="text" value="{{ implode(unserialize($cspec->specifications)) }}" name="spec[{{ $cspec->id }}][specification]" class="form-control"></th>
+                        {{-- <th><input type="text" value="" name="spec[{{ $cspec->id }}][specification]" class="form-control"></th> --}}
+                        <th><textarea name="spec[{{ $cspec->id }}][specification]" id="" cols="30" rows="10">{{ implode(unserialize($cspec->specifications)) }}</textarea></th>
                         <th>
                             <button class="btn btn-primary btn-sm btn-add-specifications">
-                                Add New
+                                Delete
                             </button>
                         </th>
                     </tr>
