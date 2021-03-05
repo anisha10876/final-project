@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2021 at 06:16 AM
+-- Generation Time: Mar 05, 2021 at 05:16 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -102,7 +102,6 @@ INSERT INTO `cars` (`id`, `name`, `image`, `brand_id`, `price`, `neg_status`, `c
 (6, 'Vernon Lang', 'images/161468134883996537_2350299358595145_6076061908341882880_n.jpg', 1, 914, 10, 'used', '2010', 'Nesciunt incidunt', 75, 'Adipisci elit magna', 16, '2021-03-02 04:50:48', '2021-03-02 04:50:48'),
 (7, 'Vernon Lang', 'images/161468138983996537_2350299358595145_6076061908341882880_n.jpg', 1, 914, 10, 'used', '2010', 'Nesciunt incidunt', 75, 'Adipisci elit magna', 16, '2021-03-02 04:51:29', '2021-03-02 04:51:29'),
 (8, 'Vernon Lang', 'images/161468148283996537_2350299358595145_6076061908341882880_n.jpg', 1, 914, 10, 'used', '2010', 'Nesciunt incidunt', 75, 'Adipisci elit magna', 16, '2021-03-02 04:53:02', '2021-03-02 04:53:02'),
-(9, 'Vernon Lang', 'images/161468150583996537_2350299358595145_6076061908341882880_n.jpg', 1, 914, 10, 'used', '2010', 'Nesciunt incidunt', 75, 'Adipisci elit magna', 16, '2021-03-02 04:53:25', '2021-03-02 04:53:25'),
 (10, 'Vernon Lang', 'images/161468151883996537_2350299358595145_6076061908341882880_n.jpg', 1, 914, 10, 'used', '2010', 'Nesciunt incidunt', 75, 'Adipisci elit magna', 16, '2021-03-02 04:53:38', '2021-03-02 04:53:38'),
 (11, 'Vernon Lang', 'images/161468152783996537_2350299358595145_6076061908341882880_n.jpg', 1, 914, 10, 'used', '2010', 'Nesciunt incidunt', 75, 'Adipisci elit magna', 16, '2021-03-02 04:53:47', '2021-03-02 04:53:47'),
 (12, 'Vernon Lang', 'images/161468153883996537_2350299358595145_6076061908341882880_n.jpg', 1, 914, 10, 'used', '2010', 'Nesciunt incidunt', 75, 'Adipisci elit magna', 16, '2021-03-02 04:53:58', '2021-03-02 04:53:58'),
@@ -226,6 +225,14 @@ CREATE TABLE `roles` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `title`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'User', 'user', '2021-03-04 07:47:43', '2021-03-04 07:47:43'),
+(2, 'Admin', 'admin', '2021-03-04 07:47:52', '2021-03-04 07:47:52');
+
 -- --------------------------------------------------------
 
 --
@@ -247,8 +254,8 @@ CREATE TABLE `specifications` (
 
 INSERT INTO `specifications` (`id`, `car_id`, `specifications`, `title`, `created_at`, `updated_at`) VALUES
 (1, 38, 'a:2:{i:0;s:25:\"Power:101kW @2850-6000rpm\";i:1;s:27:\" Torque:295Nm @1000-2850rpm\";}', 'Engine and Transmission', '2021-03-02 05:14:06', '2021-03-02 05:14:06'),
-(2, 39, 'a:2:{i:0;s:25:\"Power:101kW @2850-6000rpm\";i:1;s:27:\"Torque:2950Nm @1000-2850rpm\";}', 'Engine and Transmission', '2021-03-02 05:19:30', '2021-03-02 06:14:30'),
-(3, 39, 'a:2:{i:0;s:24:\"Top Speed (Km/h):165km/h\";i:1;s:27:\" Mileage (ARAI kmpl):3111km\";}', 'Performance and Fuel Economy', '2021-03-02 05:19:30', '2021-03-02 06:14:41');
+(2, 39, 'a:2:{i:0;s:25:\"Power:101kW @2850-6000rpm\";i:1;s:27:\"Torque:2750Nm @1000-3000rpm\";}', 'Engine and Transmission', '2021-03-02 05:19:30', '2021-03-02 23:55:54'),
+(3, 39, 'a:2:{i:0;s:25:\"Top Speed (Km/h):165km/h \";i:1;s:26:\"Mileage (ARAI kmpl):3511km\";}', 'Performance and Fuel Economy', '2021-03-02 05:19:30', '2021-03-02 23:55:54');
 
 -- --------------------------------------------------------
 
@@ -322,7 +329,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin1@gmail.com', NULL, '$2y$10$pdWXa94TcosEvsAu631zi.V.EzDOWdnL6aWN6Ud8Fyhwe.A/1wZAu', 2, NULL, '2021-02-27 23:51:54', '2021-02-27 23:51:54');
+(1, 'Admin', 'admin1@gmail.com', NULL, '$2y$10$pdWXa94TcosEvsAu631zi.V.EzDOWdnL6aWN6Ud8Fyhwe.A/1wZAu', 2, NULL, '2021-02-27 23:51:54', '2021-02-27 23:51:54'),
+(2, 'sujab', 'ssujab9@gmail.com', NULL, '$2y$10$2VsIvWn6w9Xu8K.gx2G/OOjSZOP8ymMmsAw2XaG0nGNhKkxdHgg5.', 1, NULL, '2021-03-04 08:12:29', '2021-03-04 08:12:29');
 
 --
 -- Indexes for dumped tables
@@ -447,7 +455,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `specifications`
@@ -471,7 +479,7 @@ ALTER TABLE `testomonials`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
