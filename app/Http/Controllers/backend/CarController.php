@@ -37,6 +37,9 @@ class CarController extends Controller
 
         return view('frontent.cardetails',compact('car','similarcars'));
     }
+    public function buycar(){
+        return 'buycarpage';
+    }
 
 
 

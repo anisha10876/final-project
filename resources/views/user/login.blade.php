@@ -64,6 +64,9 @@
                 </div>
 
             </form>
+            <div class="mt-3">
+                <span>Don't have an account, </span><a href="{{route('registerpage')}}" class="btn btn-sm btn-success">Register</a>
+            </div>
         </div>
     </div>
 </div>

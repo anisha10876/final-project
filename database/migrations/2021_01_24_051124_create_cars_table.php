@@ -17,6 +17,8 @@ class CreateCarsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('image');
+            $table->string('broucher')->nullable();
+            $table->longText('description')->nullable();
             $table->unsignedBigInteger('brand_id');
             $table->integer('price');
             $table->boolean('neg_status')->default(1);

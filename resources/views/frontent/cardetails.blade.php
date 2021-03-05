@@ -216,6 +216,9 @@ img {
                             <span  style="font-weight: 500;">CC : <i class="fa fa-cube fa-2x"></i> {{ $car->cc }} cc &nbsp;&nbsp;&nbsp; </span>
                             <i class="fa fa-cog fa-2x"></i> {{ $car->condition }} &nbsp;&nbsp;&nbsp;
                         </div>
+                        <div class="mt-3">
+                            <a href="{{route('buy_car')}}" class="btn btn-primary">buy car </a>
+                        </div>
 
 
                     </div>

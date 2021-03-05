@@ -80,6 +80,7 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required|max:40|min:5',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'broucher'=>'required',
             'status' => 'required',
             'price' => 'required',
             'condition' => 'required',
@@ -89,6 +90,7 @@ class AdminController extends Controller
             'color' => 'required',
             'cc' => 'required',
             'km' => 'required',
+            'description'=>'required',
 
         ]);
         if($request->hasFile('image')){
@@ -97,11 +99,19 @@ class AdminController extends Controller
            $path = public_path('images');
            $requestedimage->move($path,$imagename);
         }
+        if($request->hasFile('broucher')){
+            $requestedbroucher = $request->file('broucher');
+            $brouchername = time().$requestedbroucher->GetClientOriginalName();
+            $path = public_path('broucher');
+            $requestedbroucher->move($path,$brouchername);
+         }
 
 
             $car = Car::create([
             'name' => $request->name,
             'image' => 'images/'.$imagename,
+            'broucher'=>'broucher/'.$brouchername,
+            'description'=>$request->description,
             'brand_id' => $request->brand,
             'price' => $request->price,
             'neg_status' => $request->status,

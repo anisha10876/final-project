@@ -47,6 +47,11 @@ Route::get('/filtercars','backend\CarController@filtercars')->name('filtercars')
 ############cardetail#########
 Route::get('/cardetails/{id}','backend\CarController@cardetails')->name('cardetails');
 
+Route::group([
+    'middleware'=>['auth']
+], function(){
+    Route::get('/buy_car','backend\CarController@buycar')->name('buy_car');
+});
 
 Route::group([
     'middleware' => ['auth','admin']

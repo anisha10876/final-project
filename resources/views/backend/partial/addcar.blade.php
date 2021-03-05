@@ -14,6 +14,16 @@
             <label for="Car Name">Car image</label>
             <input type="file" name="image" id="image" class="form-control">
         </div>
+        <div class="form-group">
+            <label for="Car Name">Car broucher</label>
+            <input type="file" name="broucher" id="broucher" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="fordescription">description</label>
+            <textarea name="description" id="fordescription" cols="30" rows="10" class='form-control'></textarea>
+        </div>
+
 
         <div class="form-group">
             <label for="Car Name">Car Brand</label>

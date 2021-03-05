@@ -46,7 +46,6 @@ class UserController extends Controller
 //        dd($cred);
         if(Auth::attempt($cred)){
             $user=User::where('email',$request->email)->first();
-
             if($user->roles->title== 'Admin'){
                 return redirect()->route('admindashboard');
             }
