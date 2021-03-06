@@ -12,7 +12,6 @@
                         <br>
                         <br>
                         <h2>Our <em>Cars</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
                     </div>
                 </div>
             </div>
@@ -24,7 +23,6 @@
 <section class="section" id="trainers">
     <div class="container">
         <br>
-        <br>
         <div class="contact-form">
             <form action="{{ route('filtercars') }}" method="get" id="contact">
                 <div class="row">
@@ -33,7 +31,7 @@
                             <label>Brands:</label>
                             <a href="{{route('cars') }}">All cars</a>
                             <select name="brand" id="brand">
-                                <option value="" readonly></option>
+                                <option value="" readonly>Select Brand</option>
                                 @foreach($brands as $brand)
                                 <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                 @endforeach
@@ -42,16 +40,16 @@
                     </div>
 
 
-                <div class="col-sm-4 offset-sm-4">
-                    <div class="main-button text-center">
-                        {{-- <a href="#">Search</a> --}}
-                        <button type="submit"> Filter </button>
+                    <div class="col-sm-4 offset-sm-4">
+                        <div class="main-button text-center">
+                            {{-- <a href="#">Search</a> --}}
+                            <button type="submit"> Filter </button>
+                        </div>
                     </div>
                 </div>
-                <br>
-                <br>
             </form>
         </div>
+        <hr>
 
         <div class="row">
 
@@ -66,20 +64,20 @@
                         @endif
                     </div>
                     <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>{{ $car->price + 500 }} </del> &nbsp; <sup>$</sup>{{ $car->price }}
-                            </span>
+                        <span>
+                            <sup>Rs</sup>{{ $car->price }}
+                        </span>
 
                         <h4>{{ $car->name }}</h4>
 
                         <p>
                             <i class="fa fa-dashboard"></i> {{ $car->km }} km &nbsp;&nbsp;&nbsp;
                             <i class="fa fa-cube"></i> {{ $car->cc }} cc &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> {{ $car->condition }} &nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-cog"></i> {{ $car->getCondition() }} &nbsp;&nbsp;&nbsp;
                         </p>
 
                         <ul class="social-icons">
-                            <li><a href="{{ route('cardetails',$car->id) }}">+ View Car</a></li>
+                            <a class="btn btn-sm btn-primary" href="{{ route('cardetails',$car->id) }}">+ View Car</a></li>
                         </ul>
                     </div>
                 </div>
@@ -89,7 +87,7 @@
         <br>
          <br><br>
 
-        <nav>
+        {{-- <nav>
             <ul class="pagination pagination-lg justify-content-center">
                 <li class="page-item">
                     <a class="page-link" href="#" aria-label="Previous">
@@ -107,7 +105,7 @@
                     </a>
                 </li>
             </ul>
-        </nav>
+        </nav> --}}
 
     </div>
 </section>

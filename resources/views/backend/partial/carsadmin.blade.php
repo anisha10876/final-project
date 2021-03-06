@@ -65,7 +65,7 @@
                 <td>{{ $car->brands->name }}</td>
                 <td>{{ $car->price }}</td>
                 <td>{{ $car->neg_status }}</td>
-                <td>{{ $car->condition }}</td>
+                <td>{{ $car->getCondition() }}</td>
                 <td>{{ $car->year }}</td>
                 <td>{{ $car->model }}</td>
                 <td>{{ $car->color }}</td>

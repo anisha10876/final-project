@@ -169,7 +169,7 @@
 
                         <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
                         <div class="main-button">
-                            <a href="blog-details.html">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </article>
                     <article id='tabs-2'>
@@ -178,7 +178,7 @@
                         <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
                         <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                         <div class="main-button">
-                            <a href="blog-details.html">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </article>
                     <article id='tabs-3'>
@@ -187,7 +187,7 @@
                         <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
                         <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.</p>
                         <div class="main-button">
-                            <a href="blog-details.html">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </article>
                 </section>

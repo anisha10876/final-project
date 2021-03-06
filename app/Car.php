@@ -27,4 +27,21 @@ class Car extends Model
         }
         return false;
     }
+
+    public function getCondition(){
+        switch($this->condition){
+            case "brand_new":
+                return "Brand New";
+                break;
+            case "used":
+                return "Used";
+                break;
+            case "old":
+                return "Old";
+                break;
+            default:
+                return "";
+                break;
+        }
+    }
 }

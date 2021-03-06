@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>PHPJabbers.com | Free Car Dealer Website Template</title>
+    <title>Car Project</title>
 
     @include('frontent.partial.script')
     @yield('css')
@@ -36,7 +36,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">Car Dealer<em> Website</em></a>
+                    <a href="{{route('home')}}" class="logo">Car Dealer<em> Website</em></a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">

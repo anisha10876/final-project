@@ -12,7 +12,7 @@
             <h6>Lorem ipsum dolor sit amet</h6>
             <h2>Best <em>car dealer</em> in town!</h2>
             <div class="main-button">
-                <a href="contact.html">Contact Us</a>
+                <a href="{{route('contact')}}">Contact Us</a>
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="row">
-            @foreach($cars as $car)
+            @foreach($cars->sortByDesc('created_at')->take(4) as $car)
             <div class="col-lg-4">
                 <div class="trainer-item">
                     <div class="image-thumb">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="down-content">
                             <span>
-                                <del><sup>$</sup>{{ $car->price + 200 }} </del> &nbsp; <sup>$</sup>{{ $car->price }}
+                                <sup>Rs</sup>{{ $car->price }}
                             </span>
 
                         <h4>{{ $car->name }}</h4>
@@ -52,11 +52,11 @@
                         <p>
                             <i class="fa fa-dashboard"></i> {{ $car->km }}km &nbsp;&nbsp;&nbsp;
                             <i class="fa fa-cube"></i> {{ $car->cc }} cc &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> {{ $car->condition }} &nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-cog"></i> {{ $car->getCondition() }} &nbsp;&nbsp;&nbsp;
                         </p>
 
                         <ul class="social-icons">
-                            <li><a href="{{ route('cardetails',$car->id) }}">+ View Car</a></li>
+                            <a class="btn btn-sm btn-primary" href="{{ route('cardetails',$car->id) }}">+ View Car</a></li>
                         </ul>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
         <br>
 
         <div class="main-button text-center">
-            <a href="{{ route('cars') }}">View Cars</a>
+            <a href="{{ route('cars') }}">View All Cars</a>
         </div>
     </div>
 </section>
@@ -127,7 +127,7 @@
 
                         <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
                         <div class="main-button">
-                            <a href="blog-details.html">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </article>
                     <article id='tabs-2'>
@@ -136,7 +136,7 @@
                         <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
                         <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                         <div class="main-button">
-                            <a href="blog-details.html">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </article>
                     <article id='tabs-3'>
@@ -145,7 +145,7 @@
                         <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
                         <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.</p>
                         <div class="main-button">
-                            <a href="blog-details.html">Continue Reading</a>
+                            <a href="#">Continue Reading</a>
                         </div>
                     </article>
                 </section>
@@ -164,7 +164,7 @@
                     <h2>Send us a <em>message</em></h2>
                     <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula, sit amet dapibus odio augue eget libero. Morbi tempus mauris a nisi luctus imperdiet.</p>
                     <div class="main-button">
-                        <a href="contact.html">Contact us</a>
+                        <a href="{{route('contact')}}">Contact us</a>
                     </div>
                 </div>
             </div>

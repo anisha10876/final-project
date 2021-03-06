@@ -170,94 +170,132 @@ img {
 @section('main')
 
 <div class="container mt-5 mb-4">
-    <div class="card">
-        <div class="container-fliud">
-            <div class="wrapper row">
-                <div class="preview col-md-6">
-                    @if($car->hasImage())
-                    <img src="{{ asset($car->image) }}" height="400px" width="100%" />
+    <div class="row">
+        <div class="col-8">
+            <div class="card p-3">
+                <div class="container-fliud">
+                    <div class="wrapper row">
+                        <div class="col-6">
+                            <h3 class="product-title">{{ $car->name }}</h3>
+                        </div>
+                        <div class="col-6 text-right">
+                            <h4>
+                                Rs.&nbsp;{{ $car->price }}
+                            </h4>
+                        </div>
+                        <div class="preview col-12">
+                            @if($car->hasImage())
+                            <img src="{{ asset($car->image) }}" height="400px" width="100%" />
 
-                    <ul class="social-icons mt-3 ml-5">
-                        <li><a href="#"><i class="fa fa-facebook fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance fa-2x"></i></a></li>
-                    </ul>
-                    @else
-                    <img src="{{ asset('images/b.jpg') }}" height="400px" width="100%" />
-                    {{-- <i class="fa fa-facebook fas-2x"></i>
-                    <ul>
-                        <li><a href="#"><i class="fa fa-twitter fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin fa-2x"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance fa-2x"></i></a></li>
-                    </ul> --}}
-                    @endif
+                            @else
+                                <img src="" height="400px" width="100%" alt="Car Image" />
+                            @endif
+                        </div>
+                        <div class="details col-md-6">
+                            {{-- <div class="rating">
+                                <div class="stars">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <span class="review-no">41 reviews</span>
+                            </div> --}}
+                            <div class="down-content">
+                                <div class="mt-3">
+                                    <h4 style="font-weight: 500;"> Description </h4>
+                                    <span style="font-weight: 500;"> Kilometer </span> : <i class="fa fa-dashboard fa-2x"></i> {{ $car->km }} km &nbsp;&nbsp;&nbsp;
+                                    <span  style="font-weight: 500;">CC : <i class="fa fa-cube fa-2x"></i> {{ $car->cc }} cc &nbsp;&nbsp;&nbsp; </span>
+                                    <i class="fa fa-cog fa-2x"></i> {{ $car->getCondition() }} &nbsp;&nbsp;&nbsp;
+                                </div>
+                                <div class="mt-3">
+                                    <a href="{{route('buy_car')}}" class="btn btn-primary">buy car </a>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="details col-md-6">
-                    <h3 class="product-title">{{ $car->name }}</h3>
-                    <div class="rating">
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card p-3">
+                        <div class="container-fliud">
+                            <div class="card-title text-center text-white alert" style="background-color: #ed563b">
+                                <h4>For More Information</h3>
+                            </div>
+                            <div class="card-body">
+                                <div>
+                                    <i class="fa fa-phone"></i> &nbsp;
+                                    <span>+977-9811223344</span>
+                                </div>
+                                <div>
+                                    <i class="fa fa-envelope"></i> &nbsp;
+                                    <span>info@carrentals.com</span>
+                                </div>
+                            </div>
                         </div>
-                        <span class="review-no">41 reviews</span>
                     </div>
-                    <h3 class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</h3>
-                    <div class="down-content">
-                        <span>
-                            price :
-                            <del><sup>$</sup>{{ $car->price + 500 }} </del> &nbsp; <sup>$</sup>{{ $car->price }}
-                        </span>
-                        <div class="mt-3">
-                            <span style="font-weight: 500;"> Kilometer </span> : <i class="fa fa-dashboard fa-2x"></i> {{ $car->km }} km &nbsp;&nbsp;&nbsp;
-                            <span  style="font-weight: 500;">CC : <i class="fa fa-cube fa-2x"></i> {{ $car->cc }} cc &nbsp;&nbsp;&nbsp; </span>
-                            <i class="fa fa-cog fa-2x"></i> {{ $car->condition }} &nbsp;&nbsp;&nbsp;
+                </div>
+                <div class="col-12">
+                    <div class="card p-3">
+                        <div class="container-fliud">
+                            <div class="card-title text-center text-white alert" style="background-color: #ed563b">
+                                <h4>Connect With Us</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="social-icons text-center">
+                                    <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram fa-lg"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="mt-3">
-                            <a href="{{route('buy_car')}}" class="btn btn-primary">buy car </a>
-                        </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<hr>
+
 <div class="container">
-    <h1 style="margin-left: 40%;"> Similar cars</h1>
+    <h1 class="text-center"> Similar cars</h1>
     <div class="row">
         @if($similarcars->isNotEmpty())
-        @if($similarcars)
-        @foreach($similarcars as $similarcar)
 
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
-                @if($similarcar->hasImage())
-                <img class="card-img-top" src="{{ asset($similarcar->image) }}" height="250px" width="250px" alt="Card image cap">
-                @else
-                <img class="card-img-top" src="{{ asset('images/b.jpg') }}" height="250px" width="250px" alt="Card image cap">
-                @endif
-                <div class="card-body">
-                  <h5 class="card-title">{{ $similarcar->name }}</h5>
-                  <p class="card-text">{{ $similarcar->model }}</p>
-                  <a href="{{ route('cardetails',$similarcar->id) }}" class="btn btn-primary">+View Product</a>
+            @if($similarcars)
+            @foreach($similarcars as $similarcar)
+
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    @if($similarcar->hasImage())
+                    <img class="card-img-top" src="{{ asset($similarcar->image) }}" height="250px" width="250px" alt="Card image cap">
+                    @else
+                    <img class="card-img-top" src="{{ asset('images/b.jpg') }}" height="250px" width="250px" alt="Card image cap">
+                    @endif
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $similarcar->name }}</h5>
+                        <p class="card-text">{{ $similarcar->model }}</p>
+                        <a class="btn btn-sm btn-primary" href="{{ route('cardetails',$car->id) }}">+ View Car</a></li>
+                    </div>
                 </div>
-              </div>
-            </div>
+                </div>
 
-        @endforeach
+            @endforeach
 
 
-        @endif
+            @endif
         @else
-        <div class="col-md-12"  style="background: red">
-            <h1 style="margin-left: 30%">Sorry!!No any products!!</h1>
+        <div class="col-md-12"">
+            <h1 class="text-center text-danger">Sorry!!No similar products!!</h1>
 
         </div>
         @endif

@@ -48,7 +48,12 @@
 
         <div class="form-group">
             <label for="Car Name">Condition</label>
-            <input type="string" name="condition" id="condition" placeholder="add condition" class="form-control">
+            <select name="condition" class="form-control">
+                <option value="">Select Car Condition</option>
+                <option value="brand_new">Brand New</option>
+                <option value="">Used</option>
+                <option value="old">Old</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="Add year">Year</label>

@@ -46,7 +46,12 @@
 
         <div class="form-group">
             <label for="Car Name">Condition</label>
-            <input type="string" name="condition" value="{{ $car->condition }}" id="condition" placeholder="add condition" class="form-control">
+            <select name="condition" class="form-control">
+                <option value="">Select Car Condition</option>
+                <option value="brand_new" @if($car->condition == "brand_new") selected @endif>Brand New</option>
+                <option value="used" @if($car->condition == "used") selected @endif>Used</option>
+                <option value="old" @if($car->condition == "old") selected @endif>Old</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="Add year">Year</label>
