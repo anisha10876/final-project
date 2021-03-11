@@ -191,31 +191,85 @@ img {
                                 <img src="" height="400px" width="100%" alt="Car Image" />
                             @endif
                         </div>
-                        <div class="details col-md-6">
-                            {{-- <div class="rating">
-                                <div class="stars">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
+                        <div class="col-6 mt-3">
+                            <h4 style="font-weight: 500;"> Description </h4>
+                        </div>
+                        <div class="details col-6 mt-3">
+                            @if($car->broucher != "")
+                                <div class="text-right">
+                                    <a class="btn btn-sm btn-primary" target="_blank"
+                                        href="{{ asset($car->broucher) }}">
+                                        <i class="fa fa-download"></i>&nbsp;
+                                        Brochure
+                                    </a>
                                 </div>
-                                <span class="review-no">41 reviews</span>
-                            </div> --}}
+                            @endif
+                        </div>
+                        <div class="col-12 mt-2">
+                            {!! $car->description !!}
+                        </div>
+                        <div class="col-6">
                             <div class="down-content">
                                 <div class="mt-3">
-                                    <h4 style="font-weight: 500;"> Description </h4>
-                                    <span style="font-weight: 500;"> Kilometer </span> : <i class="fa fa-dashboard fa-2x"></i> {{ $car->km }} km &nbsp;&nbsp;&nbsp;
-                                    <span  style="font-weight: 500;">CC : <i class="fa fa-cube fa-2x"></i> {{ $car->cc }} cc &nbsp;&nbsp;&nbsp; </span>
-                                    <i class="fa fa-cog fa-2x"></i> {{ $car->getCondition() }} &nbsp;&nbsp;&nbsp;
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>Brand</th>
+                                                <td>{{$car->brands->name}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Model</th>
+                                                <td>{{$car->model}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>CC</th>
+                                                <td>{{$car->cc}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Year</th>
+                                                <td>{{$car->year}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="mt-3">
-                                    <a href="{{route('buy_car')}}" class="btn btn-primary">buy car </a>
-                                </div>
-
-
                             </div>
-
+                        </div>
+                        <div class="col-6">
+                            <div class="down-content">
+                                <div class="mt-3">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <th>Kilometer</th>
+                                                <td>{{$car->km}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Condition</th>
+                                                <td>{{$car->getCondition()}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Color</th>
+                                                <td>{{$car->color}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Negotiable</th>
+                                                <td>
+                                                    @if($car->neg_status == 1)
+                                                        Yes
+                                                    @else
+                                                        No
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 text-right">
+                            <div class="mt-3">
+                                <a href="{{route('buy_car')}}" class="btn btn-success">Buy Car</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -267,7 +321,7 @@ img {
 <hr>
 
 <div class="container">
-    <h1 class="text-center"> Similar cars</h1>
+    <h1 class="text-center mb-3"> Similar cars from "<span class="text-uppercase">{{$car->brands->name}}</span>"</h1>
     <div class="row">
         @if($similarcars->isNotEmpty())
 
@@ -294,9 +348,8 @@ img {
 
             @endif
         @else
-        <div class="col-md-12"">
-            <h1 class="text-center text-danger">Sorry!!No similar products!!</h1>
-
+        <div class="col-md-12 mt-3">
+            <h3 class="text-center text-danger">Sorry!!No similar products!!</h1>
         </div>
         @endif
     </div>

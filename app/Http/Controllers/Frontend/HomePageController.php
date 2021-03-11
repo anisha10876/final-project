@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Blog;
 use App\Brand;
 use App\Car;
 use App\Faq;
@@ -14,7 +15,9 @@ class HomePageController extends Controller
 {
     public function index(){
         $cars = Car::all();
-        return view('frontent.index',compact('cars'));
+        $blogs = Blog::all();
+        $testimonials = Testomonial::all();
+        return view('frontent.index',compact('blogs','cars','testimonials'));
     }
     public function getCars(){
         $cars = Car::all();
@@ -27,14 +30,19 @@ class HomePageController extends Controller
     }
 
         public function getabout(){
-        return view('frontent.about');
+            return view('frontent.about');
         }
+
         public function getblog(){
-        return view('frontent.blog');
+            $blogs  = Blog::orderBy('created_at','desc')->get();
+            return view('frontent.blog', compact('blogs'));
         }
-        public function getblogdetail(){
-        return view('frontent.blogdetail');
+
+        public function getblogdetail($id){
+            $blog = Blog::find($id);
+            return view('frontent.blogdetail', compact('blog'));
         }
+
         public function getfaq(){
         $faqs = Faq::all();
         return view('frontent.faq',compact('faqs'));

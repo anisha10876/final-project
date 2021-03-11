@@ -26,10 +26,6 @@
                 <a class="nav-link" href="{{route('blogs')}}">Blog</a>
             </li>
 
-
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
         </ul>
 
         <form method="get" action="{{ route('searchcar') }}" class="form-inline my-2 my-lg-0 mr-5">

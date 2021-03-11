@@ -4,118 +4,123 @@
 @section('content')
 
     <h1>Add Car</h1>
-    <form  method="post" action="{{ route('addcarsubmit') }}" enctype="multipart/form-data">
-        @csrf
-        <div class="form-group">
-            <label for="Car Name">Car Name</label>
-            <input type="text" name="name" id="name" placeholder="name" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="Car Name">Car image</label>
-            <input type="file" name="image" id="image" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="Car Name">Car broucher</label>
-            <input type="file" name="broucher" id="broucher" class="form-control">
-        </div>
+    <div class="row">
+        <div class="col-12 mb-3">
+            <form  method="post" action="{{ route('addcarsubmit') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="Car Name">Car Name</label>
+                    <input type="text" name="name" id="name" placeholder="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Car Name">Car image</label>
+                    <input type="file" name="image" id="image" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Car Name">Car broucher</label>
+                    <input type="file" name="broucher" id="broucher" class="form-control">
+                </div>
 
-        <div class="form-group">
-            <label for="fordescription">description</label>
-            <textarea name="description" id="fordescription" cols="30" rows="10" class='form-control'></textarea>
-        </div>
-
-
-        <div class="form-group">
-            <label for="Car Name">Car Brand</label>
-
-            <select class="form-control" name="brand" id="exampleFormControlSelect1">
-                @foreach($brands as $brand)
-                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                @endforeach
-            </select>
-
-        </div>
+                <div class="form-group">
+                    <label for="fordescription">description</label>
+                    <textarea name="description" id="fordescription" cols="30" rows="10" class='form-control'></textarea>
+                </div>
 
 
-        <div class="form-group">
-            <label for="Car Name">Car price</label>
-            <input type="number" name="price" id="price" placeholder="add price" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="Car Name">Status</label>
-            <input type="number" name="status" id="status" placeholder="add status" class="form-control">
-        </div>
+                <div class="form-group">
+                    <label for="Car Name">Car Brand</label>
 
-        <div class="form-group">
-            <label for="Car Name">Condition</label>
-            <select name="condition" class="form-control">
-                <option value="">Select Car Condition</option>
-                <option value="brand_new">Brand New</option>
-                <option value="">Used</option>
-                <option value="old">Old</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="Add year">Year</label>
-            <input type="text" name="year" id="year" placeholder="add year" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="Add model">Model</label>
-            <input type="text" name="model" id="model" placeholder="add model" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="Add km">Add kilometer</label>
-            <input type="number" name="km" id="km" placeholder="add kilometer" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="Add color">color</label>
-            <input type="text" name="color" id="color" placeholder="add color" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="Add CC">cc</label>
-            <input type="number" name="cc" id="cc" placeholder="add CC" class="form-control">
-        </div>
+                    <select class="form-control" name="brand" id="exampleFormControlSelect1">
+                        @foreach($brands as $brand)
+                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
 
-        <h4><label>Add Specifications</label></h4>
+                </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-bordered table-specifications">
-                    <thead>
-                    <tr>
-                        <th>SN</th>
-                        <th>Title</th>
-                        <th>Specification</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
 
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>
-                            <button class="btn btn-primary btn-sm btn-add-specifications">
-                                Add New
-                            </button>
-                        </th>
-                    </tr>
-                    </tfoot>
-                </table>
-            </div>
+                <div class="form-group">
+                    <label for="Car Name">Car price</label>
+                    <input type="number" name="price" id="price" placeholder="add price" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Car Name">Negoiable ?</label>
+                    <input type="radio" value="1" name="status" selected> Yes
+                    <input type="radio" value="0" name="status"> No
+                </div>
+
+                <div class="form-group">
+                    <label for="Car Name">Condition</label>
+                    <select name="condition" class="form-control">
+                        <option value="">Select Car Condition</option>
+                        <option value="brand_new">Brand New</option>
+                        <option value="">Used</option>
+                        <option value="old">Old</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Add year">Year</label>
+                    <input type="text" name="year" id="year" placeholder="add year" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Add model">Model</label>
+                    <input type="text" name="model" id="model" placeholder="add model" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Add km">Add kilometer</label>
+                    <input type="number" name="km" id="km" placeholder="add kilometer" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Add color">color</label>
+                    <input type="text" name="color" id="color" placeholder="add color" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="Add CC">cc</label>
+                    <input type="number" name="cc" id="cc" placeholder="add CC" class="form-control">
+                </div>
+        {{--
+                <h4><label>Add Specifications</label></h4>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered table-specifications">
+                            <thead>
+                            <tr>
+                                <th>SN</th>
+                                <th>Title</th>
+                                <th>Specification</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>
+                                    <button class="btn btn-primary btn-sm btn-add-specifications">
+                                        Add New
+                                    </button>
+                                </th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div> --}}
+
+                <button type="submit" class="btn btn-primary mb-3">Add Car</button>
+            </form>
+
         </div>
-
-        <button type="submit" class="btn btn-primary">Add Car</button>
-    </form>
-
+    </div>
 
 @endsection
 
 
-@push('script')
+{{-- @push('script')
 <script>
     function generateRandomInteger() {
     return Math.floor(Math.random() * 90000) + 10000;
@@ -147,4 +152,4 @@ jQuery(document).on('click', '.btn-add-specifications', function (e) {
 
 
 </script>
-@endpush
+@endpush --}}

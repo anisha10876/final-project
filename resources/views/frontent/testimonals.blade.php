@@ -8,7 +8,7 @@
                     <br>
                     <br>
                     <h2>Read our <em>Testimonials</em></h2>
-                    <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                    <p>Hear what our clients think about our company and services we provide.</p>
                 </div>
             </div>
         </div>

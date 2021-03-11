@@ -8,7 +8,6 @@
                     <br>
                     <br>
                     <h2>Single <em>blog post</em></h2>
-                    <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
                 </div>
             </div>
         </div>
@@ -22,22 +21,20 @@
         <br>
         <section class='tabs-content'>
             <article>
-                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
+                <h4>{{$blog->name}}</h4>
 
-                <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
+                <p>
+                    <i class="fa fa-user"></i>{{$blog->author}} &nbsp;|&nbsp;
+                    <i class="fa fa-calendar"></i> {{$blog->created_at->format('Y-m-d')}} &nbsp;|&nbsp;
+                </p>
 
-                <div><img src="assets/images/blog-image-fullscren-1-1920x700.jpg" alt=""></div>
-
+                <div>
+                    <img src="{{asset($blog->image)}}" alt="Blog Image">
+                </div>
                 <br>
-
-                <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam nihil magnam magni perferendis sit, inventore maxime architecto ab officia illum vitae veritatis asperiores laborum quaerat ratione omnis, possimus, sunt quae?</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus amet, corporis corrupti quod illum id autem assumenda nostrum quo, odio libero dolorum. Expedita, enim non voluptatibus qui veritatis iste ad? Voluptates natus dolor, minus culpa magnam! Iusto blanditiis beatae laudantium.</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolor nemo optio facere impedit fugiat obcaecati blanditiis tempora inventore sapiente beatae aspernatur vitae fuga totam possimus eveniet, praesentium maiores! Dolorum illum voluptates ipsum aspernatur explicabo numquam, aliquid a amet, deleniti eos suscipit totam laudantium excepturi voluptatum fugiat eum nesciunt minus iste, expedita provident temporibus, alias possimus veritatis aut fugit? Eaque.</p>
-
+                <p>
+                    {!! $blog->description !!}
+                </p>
                 <ul class="social-icons">
                     <li>Share this:</li>
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -52,7 +49,7 @@
         <br>
         <br>
 
-        <section class='tabs-content'>
+        {{-- <section class='tabs-content'>
             <div class="row">
                 <div class="col-md-8">
                     <h4>Comments</h4>
@@ -123,7 +120,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </div>
 </section>
 @endsection

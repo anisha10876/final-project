@@ -22,30 +22,24 @@
         <div class="row">
             <div class="col-lg-8">
                 <section class='tabs-content'>
+                    @foreach($blogs as $blog)
                     <article>
-                        <img src="assets/images/blog-image-1-940x460.jpg" alt="">
-                        <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
+                        <img src="{{asset($blog->image)}}" alt="Blog Image">
+                        <h4>{{$blog->name}}</h4>
 
-                        <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
-
-                        <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
+                        <p>
+                            <i class="fa fa-user"></i>{{$blog->author}} &nbsp;|&nbsp;
+                            <i class="fa fa-calendar"></i> {{$blog->created_at->format('Y-m-d')}} &nbsp;|&nbsp;
+                        </p>
+                        <p>{{ substr($blog->description, 1, 100).'....' }}</p>
                         <div class="main-button">
-                            <a href="#">Continue Reading</a>
+                            <a href="{{route('blogdetail',$blog->id)}}">Continue Reading</a>
                         </div>
                     </article>
 
                     <br>
                     <br>
-
-                    <article>
-                        <img src="assets/images/blog-image-2-940x460.jpg" alt="">
-                        <h4>Aspernatur excepturi magni, placeat rerum nobis magnam libero! Soluta.</h4>
-                        <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
-                        <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                        <div class="main-button">
-                            <a href="#">Continue Reading</a>
-                        </div>
-                    </article>
+                    @endforeach
 
                 </section>
             </div>

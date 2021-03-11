@@ -18,7 +18,7 @@ Route::get('/cars','Frontend\HomePageController@getCars')->name('cars');
 Route::get('/contact','Frontend\HomePageController@getContact')->name('contact');
 Route::get('/about','Frontend\HomePageController@getabout')->name('about');
 Route::get('/blog','Frontend\HomePageController@getblog')->name('blog');
-Route::get('/blogdetail','Frontend\HomePageController@getblogdetail')->name('blogdetail');
+Route::get('/blogdetail/{id}','Frontend\HomePageController@getblogdetail')->name('blogdetail');
 Route::get('/faq','Frontend\HomePageController@getfaq')->name('faq');
 Route::get('/terms','Frontend\HomePageController@getterms')->name('terms');
 Route::get('/testimonals','Frontend\HomePageController@gettestimonals')->name('testimonals');
@@ -51,6 +51,7 @@ Route::group([
     'middleware'=>['auth']
 ], function(){
     Route::get('/buy_car','backend\CarController@buycar')->name('buy_car');
+    Route::get('/cart','frontend\CartController@cartPage')->name('cart_page');
 });
 
 Route::group([

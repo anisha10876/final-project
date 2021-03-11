@@ -8,7 +8,7 @@
                         <br>
                         <br>
                         <h2>Feel free to <em>Contact Us</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <p>We will get back to you as soon as possible.</p>
                     </div>
                 </div>
             </div>

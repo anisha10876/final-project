@@ -9,7 +9,7 @@
 
     <div class="video-overlay header-text">
         <div class="caption">
-            <h6>Lorem ipsum dolor sit amet</h6>
+            <h6>Grab new set of wheels</h6>
             <h2>Best <em>car dealer</em> in town!</h2>
             <div class="main-button">
                 <a href="{{route('contact')}}">Contact Us</a>
@@ -80,16 +80,15 @@
                 <div class="section-heading dark-bg">
                     <h2>Read <em>About Us</em></h2>
                     <img src="assets/images/line-dec.png" alt="">
-                    <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+                    <p>We are building the platform to make buying and selling cars fun, fair, and accessible to everyone.</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="cta-content text-center">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore deleniti voluptas enim! Provident consectetur id earum ducimus facilis, aspernatur hic, alias, harum rerum velit voluptas, voluptate enim! Eos, sunt, quidem.</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nulla quo cum officia laboriosam. Amet tempore, aliquid quia eius commodi, doloremque omnis delectus laudantium dolor reiciendis non nulla! Doloremque maxime quo eum in culpa mollitia similique eius doloribus voluptatem facilis! Voluptatibus, eligendi, illum. Distinctio, non!</p>
+                    <p>Our purpose is to drive integrity by being honest & transparent in every interaction.</p>
+                    <p>You know what you need better than we do. So when you visit one of our stores, we’ll let you take the lead. Go ahead, sit behind the wheel. Ask for a test drive. Every vehicle you see has a low, no-haggle price, so you can focus on what matters. Of course, our friendly sales consultants will always be there if you have any questions.</p>
                 </div>
             </div>
         </div>
@@ -104,50 +103,37 @@
                 <div class="section-heading">
                     <h2>Read our <em>Blog</em></h2>
                     <img src="assets/images/line-dec.png" alt="">
-                    <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+                    <p>We present you with latest news from the motoring world.</p>
                 </div>
             </div>
         </div>
         <div class="row" id="tabs">
             <div class="col-lg-4">
                 <ul>
-                    <li><a href='#tabs-1'>Lorem ipsum dolor sit amet, consectetur adipisicing.</a></li>
-                    <li><a href='#tabs-2'>Aspernatur excepturi magni, placeat rerum nobis magnam libero! Soluta.</a></li>
-                    <li><a href='#tabs-3'>Sunt hic recusandae vitae explicabo quidem laudantium corrupti non adipisci nihil.</a></li>
-                    <div class="main-rounded-button"><a href="blog.html">Read More</a></div>
+                    @foreach($blogs->sortByDesc('created_at') as $blog)
+                        <li><a href='#tabs-{{$blog->id}}'>{{$blog->name}}</a></li>
+                    @endforeach
+                    <div class="main-rounded-button"><a href="{{route('blogs')}}">Read More</a></div>
                 </ul>
             </div>
             <div class="col-lg-8">
                 <section class='tabs-content'>
-                    <article id='tabs-1'>
-                        <img src="assets/images/blog-image-1-940x460.jpg" alt="">
-                        <h4>Lorem ipsum dolor sit amet, consectetur adipisicing.</h4>
-
-                        <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
-
-                        <p>Phasellus convallis mauris sed elementum vulputate. Donec posuere leo sed dui eleifend hendrerit. Sed suscipit suscipit erat, sed vehicula ligula. Aliquam ut sem fermentum sem tincidunt lacinia gravida aliquam nunc. Morbi quis erat imperdiet, molestie nunc ut, accumsan diam.</p>
+                    @foreach($blogs->sortByDesc('created_at') as $blog)
+                    <article id='tabs-{{$blog->id}}'>
+                        <img src="{{asset($blog->image)}}" alt="Blog Image">
+                        <h4>{{$blog->name}}</h4>
+                        <p>
+                            <i class="fa fa-user"></i>{{$blog->author}} &nbsp;|&nbsp;
+                            <i class="fa fa-calendar"></i> {{$blog->created_at->format('Y-m-d')}} &nbsp;|&nbsp;
+                        </p>
+                        <p>
+                            {{ $blog->description }}
+                        </p>
                         <div class="main-button">
-                            <a href="#">Continue Reading</a>
+                            <a href="{{route('blogdetail',$blog->id)}}">Continue Reading</a>
                         </div>
                     </article>
-                    <article id='tabs-2'>
-                        <img src="assets/images/blog-image-2-940x460.jpg" alt="">
-                        <h4>Aspernatur excepturi magni, placeat rerum nobis magnam libero! Soluta.</h4>
-                        <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
-                        <p>Integer dapibus, est vel dapibus mattis, sem mauris luctus leo, ac pulvinar quam tortor a velit. Praesent ultrices erat ante, in ultricies augue ultricies faucibus. Nam tellus nibh, ullamcorper at mattis non, rhoncus sed massa. Cras quis pulvinar eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                        <div class="main-button">
-                            <a href="#">Continue Reading</a>
-                        </div>
-                    </article>
-                    <article id='tabs-3'>
-                        <img src="assets/images/blog-image-3-940x460.jpg" alt="">
-                        <h4>Sunt hic recusandae vitae explicabo quidem laudantium corrupti non adipisci nihil.</h4>
-                        <p><i class="fa fa-user"></i> John Doe &nbsp;|&nbsp; <i class="fa fa-calendar"></i> 27.07.2020 10:10 &nbsp;|&nbsp; <i class="fa fa-comments"></i>  15 comments</p>
-                        <p>Fusce laoreet malesuada rhoncus. Donec ultricies diam tortor, id auctor neque posuere sit amet. Aliquam pharetra, augue vel cursus porta, nisi tortor vulputate sapien, id scelerisque felis magna id felis. Proin neque metus, pellentesque pharetra semper vel, accumsan a neque.</p>
-                        <div class="main-button">
-                            <a href="#">Continue Reading</a>
-                        </div>
-                    </article>
+                    @endforeach
                 </section>
             </div>
         </div>
@@ -162,7 +148,7 @@
             <div class="col-lg-10 offset-lg-1">
                 <div class="cta-content">
                     <h2>Send us a <em>message</em></h2>
-                    <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula, sit amet dapibus odio augue eget libero. Morbi tempus mauris a nisi luctus imperdiet.</p>
+                    <p>We will get in touch with you as soon as possible.</p>
                     <div class="main-button">
                         <a href="{{route('contact')}}">Contact us</a>
                     </div>
@@ -181,59 +167,34 @@
                 <div class="section-heading">
                     <h2>Read our <em>Testimonials</em></h2>
                     <img src="assets/images/line-dec.png" alt="waves">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem incidunt alias minima tenetur nemo necessitatibus?</p>
+                    <p>Hear what our clients think about our company and services we provide.</p>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <ul class="features-items">
-                    <li class="feature-item">
-                        <div class="left-icon">
-                            <img src="assets/images/features-first-icon.png" alt="First One">
-                        </div>
-                        <div class="right-content">
-                            <h4>John Doe</h4>
-                            <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
-                        </div>
-                    </li>
-                    <li class="feature-item">
-                        <div class="left-icon">
-                            <img src="assets/images/features-first-icon.png" alt="second one">
-                        </div>
-                        <div class="right-content">
-                            <h4>John Doe</h4>
-                            <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-6">
-                <ul class="features-items">
-                    <li class="feature-item">
-                        <div class="left-icon">
-                            <img src="assets/images/features-first-icon.png" alt="fourth muscle">
-                        </div>
-                        <div class="right-content">
-                            <h4>John Doe</h4>
-                            <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
-                        </div>
-                    </li>
-                    <li class="feature-item">
-                        <div class="left-icon">
-                            <img src="assets/images/features-first-icon.png" alt="training fifth">
-                        </div>
-                        <div class="right-content">
-                            <h4>John Doe</h4>
-                            <p><em>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta numquam maxime voluptatibus, impedit sed! Necessitatibus repellendus sed deleniti id et!"</em></p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            @foreach($testimonials as $testimonial)
+                <div class="col-lg-6">
+                    <ul class="features-items">
+                        {{-- <li class="feature-item"> --}}
+                            <div class="left-icon">
+                                @if($testimonial->hasImage())
+                                <img src="{{ asset($testimonial->image) }}" height="80px" width="80px" alt="First One">
+                                @else
+                                <img src="{{asset( 'images/b.jpg' )}}" height="200px" width="200px" alt="First One">
+                                @endif
+                            </div>
+                            <div class="right-content">
+                                <h4>{{$testimonial->name}}</h4>
+                                <p><em>"{{$testimonial->description}}"</em></p>
+                            </div>
+                        {{-- </li> --}}
+                    </ul>
+                </div>
+            @endforeach
         </div>
 
         <br>
 
         <div class="main-button text-center">
-            <a href="testimonials.html">Read More</a>
+            <a href="{{route('testimonals')}}">Read More</a>
         </div>
     </div>
 </section>

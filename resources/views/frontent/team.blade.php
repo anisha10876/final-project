@@ -8,7 +8,6 @@
                     <br>
                     <br>
                     <h2>Meet our <em>Team</em></h2>
-                    <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
                 </div>
             </div>
         </div>

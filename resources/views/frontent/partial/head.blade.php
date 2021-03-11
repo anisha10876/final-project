@@ -51,7 +51,7 @@
                                 <a class="dropdown-item" href="{{route('team')}}">Team</a>
                                 <a class="dropdown-item" href="{{route('testimonals')}}">Testimonials</a>
                                 <a class="dropdown-item" href="{{route('faq')}}">FAQ</a>
-                                <a class="dropdown-item" href="{{route('terms')}}">Terms</a>
+                                {{-- <a class="dropdown-item" href="{{route('terms')}}">Terms</a> --}}
                             </div>
                         </li>
                         <li><a href="{{route('contact')}}">Contact</a></li>
@@ -60,6 +60,12 @@
                         @else
                         <li><a href="{{route('logout')}}">logout</a></li>
                         @endguest
+                        <li>
+                            <a href="{{route('cart_page')}}">
+                                <i class="fa fa-shopping-cart fa-lg" style="
+                                color: #ed563b;"></i>
+                            </a>
+                        </li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
