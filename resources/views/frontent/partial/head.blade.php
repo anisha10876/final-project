@@ -42,6 +42,7 @@
                     <ul class="nav">
                         <li><a href="{{route('home')}}"> Home</a></li>
                         <li><a href="{{route('cars')}}">Cars</a></li>
+                        <li><a href="{{route('compare_cars')}}">Compare</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">About</a>
 

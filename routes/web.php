@@ -30,6 +30,8 @@ Route::post('/login','UserController@postlogin')->name('login');
 
 Route::get('/logout','UserController@logout')->name('logout');
 
+Route::get('/compare_cars','frontend\CompareController@index')->name('compare_cars');
+
 
 
 ######search#####
