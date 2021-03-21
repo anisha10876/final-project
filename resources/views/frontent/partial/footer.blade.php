@@ -29,5 +29,9 @@
 <!-- Global Init -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
+<script>
+    $(".session-alerts").delay(3200).fadeOut(300);
+</script>
+
 </body>
 </html>

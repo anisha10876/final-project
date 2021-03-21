@@ -50,7 +50,7 @@ class UserController extends Controller
                 return redirect()->route('admindashboard');
             }
             else{
-                return redirect()->route('home');
+                return redirect()->route('home')->with('success','User Login Successful.');
             }
 
     }else

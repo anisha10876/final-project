@@ -54,6 +54,12 @@ Route::group([
 ], function(){
     Route::get('/buy_car','backend\CarController@buycar')->name('buy_car');
     Route::get('/cart','frontend\CartController@cartPage')->name('cart_page');
+
+    Route::post('/book_appointment','frontend\DashboardController@submitAppointment')->name('post_book_appointment');
+    Route::get('/confirm_appointment/{id}','frontend\DashboardController@confirmAppointment')->name('appointmentConfirm');
+
+    Route::get('/dashboard','frontend\DashboardController@dashboard')->name('userdashboard');
+    Route::post('/sellmycar','frontend\DashboardController@sellCar')->name('sellmycar');
 });
 
 Route::group([

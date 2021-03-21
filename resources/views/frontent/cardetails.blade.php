@@ -266,7 +266,19 @@ img {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 text-right">
+                        <div class="col-6">
+                            <div class="mt-3">
+                                @if(Auth::check())
+                                    <button class="btn btn-primary" data-toggle="modal" data-target="#bookAppointmentModal">Book an appointment</button>
+                                    @include('frontent.bookAppointmentModal')
+                                @else
+                                    <button class="btn btn-primary" onclick="alert('Please login to book an appointment.')">
+                                        Book an appointment
+                                    </button>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col-6 text-right">
                             <div class="mt-3">
                                 <a href="{{route('buy_car')}}" class="btn btn-success">Buy Car</a>
                             </div>

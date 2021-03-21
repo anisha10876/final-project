@@ -10,4 +10,5 @@ class CartController extends Controller
     public function cartPage(){
         return view('frontent.cart_page');
     }
+
 }

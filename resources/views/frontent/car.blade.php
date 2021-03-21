@@ -26,23 +26,37 @@
         <div class="contact-form">
             <form action="{{ route('filtercars') }}" method="get" id="contact">
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="col-3">
                         <div class="form-group">
                             <label>Brands:</label>
                             <a href="{{route('cars') }}">All cars</a>
                             <select name="brand" id="brand">
                                 <option value="" readonly>Select Brand</option>
                                 @foreach($brands as $brand)
-                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                <option value="{{ $brand->id }}" @if(isset($searchdata) && $brand->id == $searchdata['brand']) selected @endif>{{ $brand->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for="">Price From</label>
+                            <input type="number" class="form-control" name="price_from" placeholder="Rs.." value="{{$searchdata['price_from'] ?? ''}}">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label for=""> To</label>
+                            <input type="number" class="form-control" name="price_to" placeholder="Rs.." value="{{$searchdata['price_to'] ?? ''}}">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <label for="">Max Kilometer</label>
+                        <input type="number" class="form-control" name="max_km" placeholder="KM" value="{{$searchdata['max_km'] ?? ''}}">
+                    </div>
 
-
-                    <div class="col-sm-4 offset-sm-4">
+                    <div class="col-3 text-right">
                         <div class="main-button text-center">
-                            {{-- <a href="#">Search</a> --}}
                             <button type="submit"> Filter </button>
                         </div>
                     </div>

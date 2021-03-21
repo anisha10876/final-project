@@ -23,11 +23,24 @@ class CarController extends Controller
     }
 
     public function filtercars(Request $request){
-        $brand = Brand::findorfail($request->brand);
+        $cars = Car::query();
+        if($request->brand){
+            $cars =$cars->where('brand_id',$request->brand);
+        }
+        if($request->price_from){
+            $cars =$cars->where('price','>=',$request->price_from);
+        }
+        if($request->price_to){
+            $cars =$cars->where('price','<=',$request->price_to);
+        }
+        if($request->max_km){
+            $cars =$cars->where('km','<=',$request->max_km);
+        }
+        $cars = $cars->get();
+        $searchdata = $request->all();
         $brands = Brand::all();
-        $carbrands = Car::where('brand_id',$request->brand)->get();
 
-        return view('backend.partial.filtercars',compact('brand','brands','carbrands'));
+        return view('frontent.car',compact('brands','cars','searchdata'));
     }
 
     public function cardetails($id){

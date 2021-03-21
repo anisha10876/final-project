@@ -57,16 +57,22 @@
                         </li>
                         <li><a href="{{route('contact')}}">Contact</a></li>
                         @guest
-                        <li><a href="{{route('login')}}">login</a></li>
+                            <li><a href="{{route('login')}}">login</a></li>
                         @else
-                        <li><a href="{{route('logout')}}">logout</a></li>
+                            <li><a href="{{route('logout')}}">logout</a></li>
+                            <li>
+                                <a href="{{route('userdashboard')}}">
+                                    <i class="fa fa-user fa-2x" style="
+                                    color: #ed563b;"></i>
+                                </a>
+                            </li>
                         @endguest
-                        <li>
+                        {{-- <li>
                             <a href="{{route('cart_page')}}">
                                 <i class="fa fa-shopping-cart fa-lg" style="
                                 color: #ed563b;"></i>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -74,9 +80,12 @@
                     <!-- ***** Menu End ***** -->
                 </nav>
             </div>
-            @include('backend.partial.messages')
 
         </div>
     </div>
 </header>
+
+<div class="container mt-3">
+    @include('backend.partial.messages')
+</div>
 <!-- ***** Header Area End ***** -->
