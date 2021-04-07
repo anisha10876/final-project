@@ -1,18 +1,38 @@
 @extends('frontent.layout.app')
 @section('css')
     <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    {{-- <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> --}}
+    <style>
+        .input-group{
+            position: relative;
+        }
+        .input-group-addon{
+            position: absolute;
+            top: 0px;
+            line-height: 38px;
+            padding: 0px 10px;
+            background: #dbdbdb;
+            z-index: 1;
+            color: #ed563b;
+            border-radius: 4px 0px 0px 4px;
+        }
+        .input-group input{
+            padding-left: 45px;
+            border-radius: 4px !important;
+        }
+    </style>
 
 @endsection
 
 @section('main')
 
+<section class="section" id="trainers" style="padding-bottom: 10px">
 <div class="container">
-    <div class="row main">
+    <div class="row main mt-3">
         <div class="col-4 offset-lg-4">
             <div class="main-login main-center">
                 <h1 class="text-center">Register</h1>
@@ -68,7 +88,10 @@
                     </div>
 
                     <div class="form-group ">
-                        <button type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                        <button type="submit" id="button" class="btn btn-primary btn-block login-button">Register</button>
+                    </div>
+                    <div class="mt-3" style="font-size: 13px">
+                        <span>Already have an account, </span><a href="{{route('loginpage')}}" class="">Login</a>
                     </div>
 
                 </form>
@@ -76,5 +99,6 @@
         </div>
     </div>
 </div>
+</section>
 
 @endsection

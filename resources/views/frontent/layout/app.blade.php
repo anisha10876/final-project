@@ -1,5 +1,10 @@
 @include('frontent.partial.head')
 
-@yield('main')
+<div class="main-content">
+    <div class="container">
+        @include('backend.partial.messages')
+    </div>
 
+    @yield('main')
+</div>
 @include('frontent.partial.footer')

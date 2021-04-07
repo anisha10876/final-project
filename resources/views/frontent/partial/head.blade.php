@@ -85,7 +85,4 @@
     </div>
 </header>
 
-<div class="container mt-3">
-    @include('backend.partial.messages')
-</div>
 <!-- ***** Header Area End ***** -->

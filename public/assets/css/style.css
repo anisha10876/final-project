@@ -79,6 +79,7 @@ p {
 global styles
 ---------------------------------------------
 */
+
 html,
 body {
   background: #fff;
@@ -509,6 +510,14 @@ header
   .header-area .main-nav .nav li.submenu:hover ul, .header-area .main-nav .nav li.submenu:focus ul {
     height: 0px;
   }
+}
+
+
+.background-header+.main-content{
+    padding-top: 80px;
+}
+.main-content{
+    min-height: calc(100vh - 193px);
 }
 
 @media (min-width: 767px) {
@@ -1038,8 +1047,10 @@ footer
 ---------------------------------------------
 */
 footer {
+
+  background-color: #ebebeb;
   text-align: center;
-  padding: 30px 0px;
+  padding: 20px 0px;
 }
 
 footer p {

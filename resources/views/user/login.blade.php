@@ -1,17 +1,34 @@
 @extends('frontent.layout.app')
 @section('css')
     <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    {{-- <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
+    <style>
+        .input-group{
+            position: relative;
+        }
+        .input-group-addon{
+            position: absolute;
+            top: 0px;
+            line-height: 38px;
+            padding: 0px 10px;
+            background: #dbdbdb;
+            z-index: 1;
+            color: #ed563b;
+            border-radius: 4px 0px 0px 4px;
+        }
+        .input-group input{
+            padding-left: 45px;
+            border-radius: 4px !important;
+        }
+    </style>
 @endsection
 
 @section('main')
 
-<div class="container">
+<section class="section" id="trainers" style="padding-bottom: 10px">
+    <div class="container">
     <div class="row main mt-5">
         <div class="col-4 offset-lg-4">
             <div class="main-login main-center" >
@@ -50,16 +67,18 @@
 
 
                     <div class="form-group mt-5">
-                        <button type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button">login</button>
+                        <button type="submit" id="button" class="btn btn-primary btn-block login-button">Login</button>
                     </div>
 
                 </form>
-                <div class="mt-5 mb-5">
-                    <span>Don't have an account, </span><a href="{{route('registerpage')}}" class="btn btn-sm btn-success">Register</a>
+                <div class="mt-3" style="font-size: 13px">
+                    <span>Don't have an account, </span><a href="{{route('registerpage')}}" class="">Register</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</section>
+
 
 @endsection
