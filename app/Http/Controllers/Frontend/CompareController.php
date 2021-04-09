@@ -12,12 +12,12 @@ class CompareController extends Controller
         $cars = Car::all();
         $car_ids = session('compare_ids');
         // dd($car_ids);
-        // if(count($car_ids) > 0){
-        //     $compare_cars = Car::whereIn('id', $car_ids)->get();
+        if(count($car_ids) > 0){
+            $compare_cars = Car::whereIn('id', $car_ids)->get();
         //     $comparision = $this->getComparision($compare_cars);
         //     $compare_cars = [$car1, $car2];
-        //     return view('frontent.compare',compact('cars','car1','car2','comparision','compare_cars'));
-        // }
+            return view('frontent.compare',compact('compare_cars'));
+        }
         return view('frontent.compare',compact('cars'));
     }
 
