@@ -45,10 +45,10 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                                 <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
-                                @if($errors->has('email'))
-                                    <span class="text-danger">{{$errors->first('email')}}</span>
-                                @endif
                             </div>
+                            @if($errors->has('email'))
+                                <span class="text-danger">{{$errors->first('email')}}</span>
+                            @endif
                         </div>
                     </div>
 
@@ -58,10 +58,10 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                                 <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
-                                @if($errors->has('password'))
-                                    <span class="text-danger">{{$errors->first('password')}}</span>
-                                @endif
                             </div>
+                            @if($errors->has('password'))
+                                <span class="text-danger">{{$errors->first('password')}}</span>
+                            @endif
                         </div>
                     </div>
 

@@ -29,13 +29,15 @@ Route::post('/register','UserController@postregister')->name('postregister');
 Route::post('/login','UserController@postlogin')->name('login');
 
 Route::get('/forgot-password','UserController@forgotPassword')->name('forgotPasswordPage');
-Route::get('/reset-password','UserController@resetPassword')->name('resetPasswordPage');
+Route::post('/forgot-password','UserController@postForgotPassword')->name('forgotPasswordSubmit');
+Route::get('/reset-password/{email}/{token}','UserController@resetPassword')->name('resetPasswordPage');
+Route::post('/post-reset-password','UserController@postResetPassword')->name('resetPasswordSubmit');
 
 Route::get('/logout','UserController@logout')->name('logout');
 
 Route::get('/add-to-compare/{id}','frontend\CompareController@addToCompare')->name('addToCompare');
 Route::get('/compare_cars','frontend\CompareController@index')->name('compare_cars');
-
+Route::get('/remove-compare/{id}','frontend\CompareController@removeFromCompare')->name('removeFromCompare');
 
 
 ######search#####
@@ -134,6 +136,8 @@ Route::get('/deletefaq/{id}','backend\AdminController@deletefaq')->name('deletef
     Route::get('/roles','backend\RoleController@roles')->name('roles');
     Route::get('/addroles','backend\RoleController@addroles')->name('addroles');
     Route::post('/addrolessubmit','backend\RoleController@addrolessubmit')->name('addrolessubmit');
-}
 
-);
+    // About Page Data #########
+    Route::get('/about-page','backend\BlogController@editAboutPage')->name('editAboutPage');
+    Route::post('/about-page','backend\BlogController@updateAboutPage')->name('updateAboutPage');
+});

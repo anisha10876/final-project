@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResetPasswordMail;
 use App\User;
+use Illuminate\Foundation\Console\Presets\React;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -68,15 +75,57 @@ class UserController extends Controller
         return redirect()->route('loginpage');
     }
 
-    public function forgotPassword(){
+    public function forgotPassword(Request $request){
         return view('user.forgotPassword');
     }
 
-    public function resetPassword(){
-        return view('user.resetPassword');
+    public function postForgotPassword(Request $request){
+        $request->validate([
+            'email' => 'required'
+        ]);
+        $user = User::where('email', $request->email)->first();
+        if(!$user){
+            Toastr::error("User with given email not found", "Invalid User");
+            return redirect()->back();
+        }
+        $token = Str::random(20);
+        DB::table('password_resets')->insert([
+            'email' => $user->email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+        $mail = Mail::to($user->email)->send(new ResetPasswordMail($user, $token));
+        Toastr::success('Check your email to reset password','Email Sent.');
+        return redirect('/');
     }
 
+    public function resetPassword($email, $token){
+        $validReset = DB::table('password_resets')->where('email', $email)
+            ->where('token', $token)
+            ->orderBy('created_at','desc')
+            ->first();
+        $user = User::where('email', $email)->first();
+        if($validReset && $user){
+            return view('user.resetPassword', compact('user'));
+        }else{
+            Toastr::error("Invalid user or reset token", "Unauthorized Reset");
+            return redirect('/');
+        }
+    }
 
+    public function postResetPassword(Request $request){
+        $request->validate([
+            'user_id' => 'required',
+            'new_password' => 'required',
+            'confirm_password' => 'required|same:new_password'
+        ]);
+        $user = User::findOrFail($request->user_id);
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+        $validReset = DB::table('password_resets')->where('email', $user->email)->delete();
+        Toastr::success('Login with your new password', 'Password Change Successful');
+        return redirect()->route('login');
+    }
 
 
 }

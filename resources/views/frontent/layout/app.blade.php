@@ -1,9 +1,9 @@
 @include('frontent.partial.head')
 
 <div class="main-content">
-    <div class="container">
+    {{-- <div class="container">
         @include('backend.partial.messages')
-    </div>
+    </div> --}}
 
     @yield('main')
 </div>

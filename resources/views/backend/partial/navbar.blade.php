@@ -25,6 +25,9 @@
             </li>
                 <a class="nav-link" href="{{route('blogs')}}">Blog</a>
             </li>
+            <li>
+                <a class="nav-link" href="{{route('editAboutPage')}}">About</a>
+            </li>
 
         </ul>
 

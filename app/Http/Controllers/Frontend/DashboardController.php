@@ -18,12 +18,21 @@ class DashboardController extends Controller
         }
         $brands = Brand::all();
         $user_cars = UserCar::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->get();
-        return view('frontent.userDashboard',compact('brands','user_cars'));
+        $user_car_ids = $user_cars->pluck('id')->toArray();
+        // $myCarAppointments = Appointment::->orderBy('created_at','desc')->get();
+        $appointments = Appointment::whereIn('car_id',$user_car_ids)->orWhere('user_id', Auth::user()->id)
+            ->orderBy('date','desc')->get();
+        return view('frontent.userDashboard',compact('brands','user_cars', 'appointments'));
     }
 
 
     public function submitAppointment(Request $request){
         // dd($request);
+        $user_car = UserCar::where('user_id', Auth::user()->id)->where('card_id', $request->car_id)->first();
+        if($user_car){
+            Toastr::error("Cannot Book Appointment for your own car", "Invalid action");
+            return redirect()->back();
+        }
         $appointment = new Appointment();
         $appointment->user_id = Auth::user()->id;
         $appointment->car_id = $request->car_id;
@@ -33,7 +42,7 @@ class DashboardController extends Controller
         $appointment->reason = $request->reason;
         $appointment->location = $request->location;
         $appointment->save();
-
+        Toastr::success("Your appointment has been recorded successfully","Operation Success");
         return redirect()->route('appointmentConfirm',$appointment->id);
     }
 
@@ -104,7 +113,7 @@ class DashboardController extends Controller
         $userCar->user_id = Auth::user()->id;
         $userCar->status = "on_sale";
         $userCar->save();
-
+        Toastr::success("Your car has been added for sale", "New Car Added.");
         return redirect()->back()->with('success','New Car Added Successfully');
 
     }

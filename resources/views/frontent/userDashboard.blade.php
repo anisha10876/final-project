@@ -69,6 +69,8 @@
                                     aria-controls="floatingV-tab-2" aria-selected="false">Sell Car</a>
                                 <a class="nav-link" id="floatingV-tab-3-tab" data-toggle="pill" href="#floatingV-tab-my-car" role="tab"
                                     aria-controls="floatingV-tab-3" aria-selected="false">My Cars</a>
+                                <a class="nav-link" id="floatingV-tab-3-tab" data-toggle="pill" href="#floatingV-tab-my-app" role="tab"
+                                    aria-controls="floatingV-tab-3" aria-selected="false">My Appointments</a>
 
                             </div>
                         </div>
@@ -95,6 +97,12 @@
                                     aria-labelledby="floatingV-tab-3-tab">
                                     <p>
                                         @include('frontent.userDashboardCars')
+                                    </p>
+                                </div>
+                                <div class="tab-pane fade" id="floatingV-tab-my-app" role="tabpanel"
+                                    aria-labelledby="floatingV-tab-3-tab">
+                                    <p>
+                                        @include('frontent.userDashboardAppointments')
                                     </p>
                                 </div>
                             </div>

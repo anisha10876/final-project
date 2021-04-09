@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Date:</label>
-                    <input type="text" class="form-control datepicker" autocomplete="off" id="app-date" name="date" required>
+                    <input type="text" class="form-control datepicker" autocomplete="off" id="app-date" name="date" required readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Time:</label>

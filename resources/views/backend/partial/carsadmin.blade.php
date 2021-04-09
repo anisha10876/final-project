@@ -40,8 +40,7 @@
                 <th scope="col">Condition</th>
                 <th scope="col">Year</th>
                 <th scope="col">Model</th>
-                <th scope="col">Color</th>
-                <th scope="col">CC</th>
+                <th scope="col">Owner</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -63,13 +62,19 @@
                     @endif
                 </td>
                 <td>{{ $car->brands->name }}</td>
-                <td>{{ $car->price }}</td>
+                <td>
+                    <del>{{ $car->price }}</del><br>
+                    <span title="Caculated with resale value algorithm">
+                    {{$car->calculateResale()}}
+                    </span>
+                </td>
                 <td>{{ $car->neg_status }}</td>
                 <td>{{ $car->getCondition() }}</td>
                 <td>{{ $car->year }}</td>
                 <td>{{ $car->model }}</td>
-                <td>{{ $car->color }}</td>
-                <td>{{ $car->cc }}</td>
+                <td>
+                    {{$car->user()}}
+                </td>
                 <td style="width: 120px">
                     <a href="{{ route('editcar',$car->id) }}"><span style="color: green;"><i class="fas fa-edit fa-2x"></i></span></a>
                     <a href="{{ route('deletecar',$car->id) }}"><span style="color: red;"><i class="fas fa-trash-alt fa-2x"></i></span></a>

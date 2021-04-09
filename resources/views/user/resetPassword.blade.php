@@ -36,19 +36,19 @@
                 @if(session()->has('error'))
                     <spam>{{ session()->get('error') }}</spam>
                 @endif
-                <form class="" method="post" >
+                <form class="" method="post" action="{{route('resetPasswordSubmit')}}">
                     @csrf
-
+                    <input type="hidden" name="user_id" value="{{$user->id}}">
                     <div class="form-group">
                         <label for="new-password" class="cols-sm-2 control-label">New Password</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                                 <input type="password" class="form-control" name="new_password" id="new-password"  placeholder="Enter New Password"/>
-                                @if($errors->has('email'))
-                                    <span class="text-danger">{{$errors->first('email')}}</span>
-                                @endif
                             </div>
+                            @if($errors->has('email'))
+                                <span class="text-danger">{{$errors->first('email')}}</span>
+                            @endif
                         </div>
                     </div>
 
@@ -58,10 +58,10 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
                                 <input type="password" class="form-control" name="confirm_password" id="confirm-password"  placeholder="Re-enter New Password"/>
-                                @if($errors->has('email'))
-                                    <span class="text-danger">{{$errors->first('email')}}</span>
-                                @endif
                             </div>
+                            @if($errors->has('confirm_password'))
+                                <span class="text-danger">{{$errors->first('confirm_password')}}</span>
+                            @endif
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@
                     </div> --}}
 
                     <div class="form-group mt-5">
-                        <button type="button" id="button" class="btn btn-primary btn-block login-button">Change Password</a>
+                        <button type="submit" id="button" class="btn btn-primary btn-block login-button">Change Password</a>
                     </div>
 
                 </form>

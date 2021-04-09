@@ -36,7 +36,7 @@
                 @if(session()->has('error'))
                     <spam>{{ session()->get('error') }}</spam>
                 @endif
-                <form class="" method="post" >
+                <form class="" method="post" action="{{route('forgotPasswordSubmit')}}">
                     @csrf
 
                     <div class="form-group">
@@ -45,10 +45,10 @@
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
                                 <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
-                                @if($errors->has('email'))
-                                    <span class="text-danger">{{$errors->first('email')}}</span>
-                                @endif
                             </div>
+                            @if($errors->has('email'))
+                                <span class="text-danger">{{$errors->first('email')}}</span>
+                            @endif
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="form-group mt-5">
-                        <a href="{{route('resetPasswordPage')}}" id="button" class="btn btn-primary btn-block login-button">Confirm</a>
+                        <button type="submit" id="button" class="btn btn-primary btn-block login-button">Confirm</button>
                     </div>
 
                 </form>

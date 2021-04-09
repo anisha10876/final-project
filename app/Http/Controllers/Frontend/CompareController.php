@@ -1,16 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Car;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CompareController extends Controller
 {
     public function index(Request $request){
         $cars = Car::all();
         $car_ids = session('compare_ids');
+        if(!$car_ids){
+            Toastr::error("Add Cars To Comparision First", "No Cars Found");
+            return redirect()->route('home');
+        }
         // dd($car_ids);
         if(count($car_ids) > 0){
             $compare_cars = Car::whereIn('id', $car_ids)->get();
@@ -25,17 +30,36 @@ class CompareController extends Controller
         $allCars = session('compare_ids') ?? null;
         if(!$allCars){
             session(['compare_ids' => [$id]]);
+            Toastr::success("Add more cars for better review.","New Car Added To Comparision");
             return redirect()->back();
         }elseif(in_array($id, $allCars)){
+            Toastr::error("Car already added to comparision","Invalid action");
             return redirect()->back();
         }elseif(count($allCars) >= 3){
+            Toastr::error("Cannot add more than 3 cars","Maximum car for comparision reached");
             return redirect()->back();
         }else{
             $value = session('compare_ids');
             array_push($value, $id);
             session(['compare_ids' => $value]);
+            Toastr::success("New Car Added To Comparision","Operation Success");
             return redirect()->back();
         }
+    }
+
+    public function removeFromCompare($id){
+        $value = session('compare_ids');
+        foreach($value as $key=>$val){
+            if($val == $id){
+                unset($value[$key]);
+            }
+        }
+        session(['compare_ids' => $value]);
+        Toastr::success("Car Removed From Comparision", "Operation Success");
+        if(count($value) == 0){
+            return redirect('/');
+        }
+        return redirect()->back();
     }
 
     public function getComparision($compare_cars){

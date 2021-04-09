@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Blog;
+use App\Setting;
 
 class BlogController extends Controller
 {
@@ -88,5 +89,18 @@ class BlogController extends Controller
         }
         $blog->delete();
         return redirect()->back()->with('error','Blog deleted successfully');
+    }
+
+    public function editAboutPage(){
+        $settings = Setting::all()->pluck('value','key')->toArray();
+        return view('backend.editAbout', compact('settings'));
+    }
+
+    public function updateAboutPage(Request $request){
+        $data = $request->all();
+        foreach($data as $key=>$value){
+            Setting::updateOrCreate(['key'=>$key],['value' => $value]);
+        }
+        return redirect()->back()->with('success','About Page Data Updated.');
     }
 }

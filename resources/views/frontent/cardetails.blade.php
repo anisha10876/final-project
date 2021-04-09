@@ -180,7 +180,10 @@ img {
                         </div>
                         <div class="col-6 text-right">
                             <h4>
-                                Rs.&nbsp;{{ $car->price }}
+                                Rs.&nbsp;<del>{{ $car->price }}</del>
+                                <span title="From resale value calculation algorithm">
+                                    {{$car->calculateResale()}}
+                                </span>
                             </h4>
                         </div>
                         <div class="preview col-12">
@@ -272,9 +275,9 @@ img {
                                     <button class="btn btn-primary" data-toggle="modal" data-target="#bookAppointmentModal">Book an appointment</button>
                                     @include('frontent.bookAppointmentModal')
                                 @else
-                                    <button class="btn btn-primary" onclick="alert('Please login to book an appointment.')">
+                                    <a class="btn btn-primary" href="{{route('loginpage')}}">
                                         Book an appointment
-                                    </button>
+                                    </a>
                                 @endif
                             </div>
                         </div>

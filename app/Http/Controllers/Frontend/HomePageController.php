@@ -8,6 +8,7 @@ use App\Car;
 use App\Faq;
 use App\Team;
 use App\Http\Controllers\Controller;
+use App\Setting;
 use App\Testomonial;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,8 @@ class HomePageController extends Controller
     }
 
         public function getabout(){
-            return view('frontent.about');
+            $settings = Setting::all()->pluck('value','key')->toArray();
+            return view('frontent.about', compact('settings'));
         }
 
         public function getblog(){

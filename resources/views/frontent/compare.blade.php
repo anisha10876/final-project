@@ -47,7 +47,12 @@
                     <div class="col-4">
                         <div class="card">
                             <div class="card-title text-center">
-                                <h3 class="text-uppercase">{{$car->name}}</h3>
+                                <h3 class="text-uppercase">
+                                    {{$car->name}} &nbsp;&nbsp;&nbsp;
+                                    <a href="{{route('removeFromCompare', $car->id)}}">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </h3>
                             </div>
                             <div class="card-body">
                                 <img src="{{asset($car->image)}}" alt="Car Image" style="width:100%; height:auto">

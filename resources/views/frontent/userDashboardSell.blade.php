@@ -7,19 +7,19 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Car Name">Car Name</label>
-                        <input type="text" name="name" id="name" placeholder="name" class="form-control">
+                        <input type="text" name="name" id="name" placeholder="name" class="form-control" required>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Car Name">Car image</label>
-                        <input type="file" name="image" id="image" class="form-control">
+                        <input type="file" name="image" id="image" class="form-control" required>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Car Name">Car broucher</label>
-                        <input type="file" name="broucher" id="broucher" class="form-control">
+                        <input type="file" name="broucher" id="broucher" class="form-control" required>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label for="Car Name">Car Brand</label>
 
-                        <select class="form-control" name="brand" id="exampleFormControlSelect1">
+                        <select class="form-control" required name="brand" id="exampleFormControlSelect1">
                             @foreach($brands as $brand)
                             <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                             @endforeach
@@ -39,7 +39,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Car Name">Car price</label>
-                        <input type="number" name="price" id="price" placeholder="add price" class="form-control">
+                        <input type="number" name="price" id="price" placeholder="add price" class="form-control" required>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Car Name">Condition</label>
-                        <select name="condition" class="form-control">
+                        <select name="condition" class="form-control" required>
                             <option value="">Select Car Condition</option>
                             <option value="brand_new">Brand New</option>
                             <option value="used">Used</option>
@@ -66,34 +66,34 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Add year">Year</label>
-                        <input type="text" name="year" id="year" placeholder="add year" class="form-control">
+                        <input type="text" name="year" id="year" placeholder="add year" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Add model">Model</label>
-                        <input type="text" name="model" id="model" placeholder="add model" class="form-control">
+                        <input type="text" name="model" id="model" placeholder="add model" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Add km">Kilometer</label>
-                        <input type="number" name="km" id="km" placeholder="add kilometer" class="form-control">
+                        <input type="number" name="km" id="km" placeholder="add kilometer" class="form-control" required>
                     </div>
                 </div>
 
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Add color">color</label>
-                        <input type="text" name="color" id="color" placeholder="add color" class="form-control">
+                        <input type="text" name="color" id="color" placeholder="add color" class="form-control" required>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="Add CC">cc</label>
-                        <input type="number" name="cc" id="cc" placeholder="add CC" class="form-control">
+                        <input type="number" name="cc" id="cc" placeholder="add CC" class="form-control" required>
                     </div>
                 </div>
 
