@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+<?php var_dump(session('compare_ids')) ?>
 <!-- ***** Preloader Start ***** -->
 <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">

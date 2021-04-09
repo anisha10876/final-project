@@ -10,23 +10,56 @@ class CompareController extends Controller
 {
     public function index(Request $request){
         $cars = Car::all();
-        if($request->car_1 && $request->car_2){
-            $car1 = Car::find($request->car_1);
-            $car2 = Car::find($request->car_2);
-            $comparision = $this->getComparision($car1, $car2);
-            $compare_cars = [$car1, $car2];
-            return view('frontent.compare',compact('cars','car1','car2','comparision','compare_cars'));
-        }
+        $car_ids = session('compare_ids');
+        // dd($car_ids);
+        // if(count($car_ids) > 0){
+        //     $compare_cars = Car::whereIn('id', $car_ids)->get();
+        //     $comparision = $this->getComparision($compare_cars);
+        //     $compare_cars = [$car1, $car2];
+        //     return view('frontent.compare',compact('cars','car1','car2','comparision','compare_cars'));
+        // }
         return view('frontent.compare',compact('cars'));
     }
 
-    public function getComparision($car1, $car2){
-        $km = 0;
-        if($car1->km < $car2->km){
-            $km = $car1->id;
-        }elseif($car1->km > $car2->km){
-            $km = $car2->id;
+    public function addToCompare(Request $request, $id){
+        $allCars = session('compare_ids') ?? null;
+        if(!$allCars){
+            session(['compare_ids' => [$id]]);
+            return redirect()->back();
+        }elseif(in_array($id, $allCars)){
+            return redirect()->back();
+        }elseif(count($allCars) >= 3){
+            return redirect()->back();
+        }else{
+            $value = session('compare_ids');
+            array_push($value, $id);
+            session(['compare_ids' => $value]);
+            return redirect()->back();
         }
+    }
+
+    public function getComparision($compare_cars){
+        if($compare_cars->count() < 2){
+            return [
+                'year'=>0,
+                'km' => 0,
+                'cc' => 0,
+                'condition' => 0
+            ];
+        }
+        $km = 0;
+        $highestKm =  $compare_cars->max('km');
+        $lowestKm = $compare_cars->min('km');
+        foreach($compare_cars as $car){
+
+        }
+        $carWithHighKm = $compare_cars->where('km', $highestKm);
+        if($carWithHighKm->count() > 1){
+            $km = 0;
+        }else{
+            $km = $carWithHighKm->first()->id;
+        }
+        dd($km);
         $cc = 0;
         if($car1->cc > $car2->cc){
             $cc = $car1->id;

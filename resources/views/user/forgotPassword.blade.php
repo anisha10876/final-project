@@ -32,11 +32,11 @@
     <div class="row main mt-5">
         <div class="col-4 offset-lg-4">
             <div class="main-login main-center" >
-                <h1 class="text-center mb-3">Login</h1>
+                <h1 class="text-center mb-3">Forgot Your Password ?</h1>
                 @if(session()->has('error'))
                     <spam>{{ session()->get('error') }}</spam>
                 @endif
-                <form class="" method="post" action="{{route('login')}}">
+                <form class="" method="post" >
                     @csrf
 
                     <div class="form-group">
@@ -52,31 +52,19 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Password</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
-                                @if($errors->has('password'))
-                                    <span class="text-danger">{{$errors->first('password')}}</span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="mt-3 text-right" style="font-size: 13px">
-                        <span>Forgot Password, </span><a href="{{route('forgotPasswordPage')}}" class="">Reset Here.</a>
+                    <div class="mt-3" style="font-size: 13px">
+                        <span>The reset password link will be sent to your </span><a href="#" class="">email</a>
                     </div>
 
                     <div class="form-group mt-5">
-                        <button type="submit" id="button" class="btn btn-primary btn-block login-button">Login</button>
+                        <a href="{{route('resetPasswordPage')}}" id="button" class="btn btn-primary btn-block login-button">Confirm</a>
                     </div>
 
                 </form>
-                <div class="mt-3" style="font-size: 13px">
+                {{-- <div class="mt-3" style="font-size: 13px">
                     <span>Don't have an account, </span><a href="{{route('registerpage')}}" class="">Register</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

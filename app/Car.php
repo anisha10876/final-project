@@ -44,4 +44,5 @@ class Car extends Model
                 break;
         }
     }
+
 }

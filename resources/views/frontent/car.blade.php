@@ -91,7 +91,8 @@
                         </p>
 
                         <ul class="social-icons">
-                            <a class="btn btn-sm btn-primary" href="{{ route('cardetails',$car->id) }}">+ View Car</a></li>
+                            <a class="btn btn-sm btn-primary" href="{{ route('cardetails',$car->id) }}">View Car</a></li>
+                            <a class="btn btn-sm btn-outline-secondary text-dark float-right" href="{{ route('addToCompare',$car->id) }}">+ Add to Compare</a></li>
                         </ul>
                     </div>
                 </div>

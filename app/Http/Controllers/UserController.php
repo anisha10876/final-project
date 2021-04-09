@@ -68,6 +68,14 @@ class UserController extends Controller
         return redirect()->route('loginpage');
     }
 
+    public function forgotPassword(){
+        return view('user.forgotPassword');
+    }
+
+    public function resetPassword(){
+        return view('user.resetPassword');
+    }
+
 
 
 

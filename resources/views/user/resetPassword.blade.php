@@ -32,19 +32,19 @@
     <div class="row main mt-5">
         <div class="col-4 offset-lg-4">
             <div class="main-login main-center" >
-                <h1 class="text-center mb-3">Login</h1>
+                <h1 class="text-center mb-3">Reset Your Password ?</h1>
                 @if(session()->has('error'))
                     <spam>{{ session()->get('error') }}</spam>
                 @endif
-                <form class="" method="post" action="{{route('login')}}">
+                <form class="" method="post" >
                     @csrf
 
                     <div class="form-group">
-                        <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                        <label for="new-password" class="cols-sm-2 control-label">New Password</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" name="new_password" id="new-password"  placeholder="Enter New Password"/>
                                 @if($errors->has('email'))
                                     <span class="text-danger">{{$errors->first('email')}}</span>
                                 @endif
@@ -53,30 +53,31 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <label for="confirm-password" class="cols-sm-2 control-label">Confirm Password</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
-                                @if($errors->has('password'))
-                                    <span class="text-danger">{{$errors->first('password')}}</span>
+                                <input type="password" class="form-control" name="confirm_password" id="confirm-password"  placeholder="Re-enter New Password"/>
+                                @if($errors->has('email'))
+                                    <span class="text-danger">{{$errors->first('email')}}</span>
                                 @endif
                             </div>
                         </div>
                     </div>
 
-                    <div class="mt-3 text-right" style="font-size: 13px">
-                        <span>Forgot Password, </span><a href="{{route('forgotPasswordPage')}}" class="">Reset Here.</a>
-                    </div>
+
+                    {{-- <div class="mt-3" style="font-size: 13px">
+                        <span>The reset password link will be sent to your </span><a href="#" class="">email</a>
+                    </div> --}}
 
                     <div class="form-group mt-5">
-                        <button type="submit" id="button" class="btn btn-primary btn-block login-button">Login</button>
+                        <button type="button" id="button" class="btn btn-primary btn-block login-button">Change Password</a>
                     </div>
 
                 </form>
-                <div class="mt-3" style="font-size: 13px">
+                {{-- <div class="mt-3" style="font-size: 13px">
                     <span>Don't have an account, </span><a href="{{route('registerpage')}}" class="">Register</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

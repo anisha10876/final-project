@@ -34,46 +34,17 @@
         <br>
         <div class="row">
             <div class="col-8 offset-lg-2 text-center">
-                <form action="" method="get">
-                    <div class="row">
-                        <div class="col-5">
-                            <div class="form-group">
-                                {{-- <label for="">Car 1</label> --}}
-                                <select name="car_1" class="form-control" required>
-                                    <option value="">Select Car 1</option>
-                                    @foreach($cars as $car)
-                                        <option value="{{$car->id}}">{{$car->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
 
-                        <div class="col-5">
-                            <div class="form-group">
-                                {{-- <label for="">Car 1</label> --}}
-                                <select name="car_2" class="form-control" required>
-                                    <option value="">Select Car 2</option>
-                                    @foreach($cars as $car)
-                                        <option value="{{$car->id}}">{{$car->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-2 text-right">
-                            <button class="btn btn-primary">Compare</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
 
-        @if(isset($comparision))
+        @if(isset($compare_cars)))
             <div class="row mt-3">
                 <div class="col-12 text-center mb-2">
                     <h2>Comparision</h2>
                 </div>
                 @foreach($compare_cars as $car)
-                    <div class="col-6">
+                    <div class="col-4">
                         <div class="card">
                             <div class="card-title text-center">
                                 <h3 class="text-uppercase">{{$car->name}}</h3>
@@ -97,23 +68,23 @@
                                             <td>{{$car->color}}</td>
                                         </tr>
 
-                                        <tr class="@if($comparision['condition'] == 0)table-secondary @elseif($comparision['condition'] == $car->id) table-success @else table-danger @endif text-white">
+                                        {{-- <tr class="@if($comparision['condition'] == 0)table-secondary @elseif($comparision['condition'] == $car->id) table-success @else table-danger @endif text-white">
                                             <th>Condition</th>
                                             <td>{{$car->getCondition()}}</td>
+                                        </tr> --}}
+                                        <tr class="@if($car->compare_value('km',$compare_cars) == 0)table-secondary @elseif($comparision['km'] == $car->id) table-success @else table-danger @endif text-white">
+                                            <th>Km</th>
+                                            <td>{{$car->km}}</td>
                                         </tr>
-                                        <tr class="@if($comparision['km'] == 0)table-secondary @elseif($comparision['km'] == $car->id) table-success @else table-danger @endif text-white">
-                                        <th>Km</th>
-                                        <td>{{$car->km}}</td>
-                                        </tr>
-                                        <tr class="@if($comparision['cc'] == 0)table-secondary @elseif($comparision['cc'] == $car->id) table-success @else table-danger @endif text-white">
+                                        {{-- <tr class="@if($comparision['cc'] == 0)table-secondary @elseif($comparision['cc'] == $car->id) table-success @else table-danger @endif text-white">
                                         <th>CC</th>
                                         <td>{{$car->cc}}</td>
-                                        </tr>
+                                        </tr> --}}
 
-                                        <tr class="@if($comparision['year'] == 0)table-secondary @elseif($comparision['year'] == $car->id) table-success @else table-danger @endif text-white">
+                                        {{-- <tr class="@if($comparision['year'] == 0)table-secondary @elseif($comparision['year'] == $car->id) table-success @else table-danger @endif text-white">
                                             <th>Year</th>
                                             <td>{{$car->year}}</td>
-                                        </tr>
+                                        </tr> --}}
 
                                     </table>
                                 </div>
@@ -138,3 +109,26 @@
 </section>
 
 @endsection
+
+{{-- <form action="" method="get">
+    <div class="row">
+        <div class="col-5">
+            <div class="form-group">
+                <select name="car_1" class="form-control" required>
+                    <option value="">Select Car 1</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-5">
+            <div class="form-group">
+                <select name="car_2" class="form-control" required>
+                    <option value="">Select Car 2</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-2 text-right">
+            <button class="btn btn-primary">Compare</button>
+        </div>
+    </div>
+</form> --}}

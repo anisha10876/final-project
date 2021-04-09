@@ -28,8 +28,12 @@ Route::get('/login' ,'UserController@login')->name('loginpage')->middleware('gue
 Route::post('/register','UserController@postregister')->name('postregister');
 Route::post('/login','UserController@postlogin')->name('login');
 
+Route::get('/forgot-password','UserController@forgotPassword')->name('forgotPasswordPage');
+Route::get('/reset-password','UserController@resetPassword')->name('resetPasswordPage');
+
 Route::get('/logout','UserController@logout')->name('logout');
 
+Route::get('/add-to-compare/{id}','frontend\CompareController@addToCompare')->name('addToCompare');
 Route::get('/compare_cars','frontend\CompareController@index')->name('compare_cars');
 
 
