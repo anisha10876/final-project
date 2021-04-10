@@ -281,11 +281,11 @@ img {
                                 @endif
                             </div>
                         </div>
-                        <div class="col-6 text-right">
+                        {{-- <div class="col-6 text-right">
                             <div class="mt-3">
                                 <a href="{{route('buy_car')}}" class="btn btn-success">Buy Car</a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

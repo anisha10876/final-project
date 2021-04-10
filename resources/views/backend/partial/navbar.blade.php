@@ -15,6 +15,9 @@
                 <a class="nav-link" href="{{route('carsadmin')}}">Cars</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.appointments')}}">Appointments</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('faqs')}}">FAQs</a>
             </li>
                 <a class="nav-link" href="{{route('teams')}}">Teams</a>

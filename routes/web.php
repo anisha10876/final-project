@@ -137,6 +137,9 @@ Route::get('/deletefaq/{id}','backend\AdminController@deletefaq')->name('deletef
     Route::get('/addroles','backend\RoleController@addroles')->name('addroles');
     Route::post('/addrolessubmit','backend\RoleController@addrolessubmit')->name('addrolessubmit');
 
+    // Admin appointments
+    Route::get('/admin-appointments','backend\BlogController@allAppointments')->name('admin.appointments');
+
     // About Page Data #########
     Route::get('/about-page','backend\BlogController@editAboutPage')->name('editAboutPage');
     Route::post('/about-page','backend\BlogController@updateAboutPage')->name('updateAboutPage');

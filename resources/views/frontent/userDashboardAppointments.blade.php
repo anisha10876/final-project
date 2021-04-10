@@ -9,6 +9,7 @@
                         <th>S.N.</th>
                         <th>Car</th>
                         <th>Photo</th>
+                        <th>Owner</th>
                         <th>Interested Party</th>
                         <th>Date</th>
                         <th>Details</th>
@@ -25,6 +26,7 @@
                             <td>
                                 <img src="{{ asset($appointment->car->image) }}" height="100px" width="auto" />
                             </td>
+                            <td>{{$appointment->car->user()}}</td>
                             <td>
                                 @if($appointment->user_id == auth()->user()->id)
                                     Self

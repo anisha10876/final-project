@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Appointment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
@@ -102,5 +103,10 @@ class BlogController extends Controller
             Setting::updateOrCreate(['key'=>$key],['value' => $value]);
         }
         return redirect()->back()->with('success','About Page Data Updated.');
+    }
+
+    public function allAppointments(){
+        $appointments = Appointment::orderBy('date','desc')->get();
+        return view('backend.appointments',compact('appointments'));
     }
 }
