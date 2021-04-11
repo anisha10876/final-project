@@ -26,7 +26,13 @@
         <div class="contact-form">
             <form action="{{ route('filtercars') }}" method="get" id="contact">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" placeholder="Car Name">
+                        </div>
+                    </div>
+                    <div class="col-2">
                         <div class="form-group">
                             <label>Brands:</label>
                             <a href="{{route('cars') }}">All cars</a>
@@ -55,8 +61,8 @@
                         <input type="number" class="form-control" name="max_km" placeholder="KM" value="{{$searchdata['max_km'] ?? ''}}">
                     </div>
 
-                    <div class="col-3 text-right">
-                        <div class="main-button text-center">
+                    <div class="col-2 text-right">
+                        <div class="main-button">
                             <button type="submit"> Filter </button>
                         </div>
                     </div>

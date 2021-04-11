@@ -24,6 +24,9 @@ class CarController extends Controller
 
     public function filtercars(Request $request){
         $cars = Car::query();
+        if($request->name){
+            $cars = $cars->where('name','like','%'.$request->name.'%');
+        }
         if($request->brand){
             $cars =$cars->where('brand_id',$request->brand);
         }
