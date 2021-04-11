@@ -30,34 +30,42 @@ class HomePageController extends Controller
         return view('frontent.Contact');
     }
 
-        public function getabout(){
+    public function getabout(){
             $settings = Setting::all()->pluck('value','key')->toArray();
             return view('frontent.about', compact('settings'));
-        }
+    }
 
-        public function getblog(){
+    public function getblog(){
             $blogs  = Blog::orderBy('created_at','desc')->get();
             return view('frontent.blog', compact('blogs'));
-        }
+    }
 
-        public function getblogdetail($id){
+    public function getblogdetail($id){
             $blog = Blog::find($id);
             return view('frontent.blogdetail', compact('blog'));
-        }
+    }
 
-        public function getfaq(){
+    public function getfaq(){
         $faqs = Faq::all();
         return view('frontent.faq',compact('faqs'));
-        }
-        public function getterms(){
+    }
+    public function getterms(){
         return view('frontent.terms');
-        }
-        public function gettestimonals(){
+    }
+    public function gettestimonals(){
         $testomonals = Testomonial::all();
         return view('frontent.testimonals',compact('testomonals'));
-        }
-        public function getteam(){
+    }
+    public function getteam(){
         $teams = Team::all();
         return view('frontent.team',compact('teams'));
-        }
+    }
+
+    public function calculateResalePage(){
+        return view('frontent.resalePage');
+    }
+
+    public function calculateResalePost(Request $request){
+        dd($request);
+    }
 }

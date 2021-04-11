@@ -6,9 +6,12 @@ use App\Appointment;
 use App\Brand;
 use App\Car;
 use App\Http\Controllers\Controller;
+use App\User;
 use App\UserCar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -116,5 +119,42 @@ class DashboardController extends Controller
         Toastr::success("Your car has been added for sale", "New Car Added.");
         return redirect()->back()->with('success','New Car Added Successfully');
 
+    }
+
+    public function updateProfile(Request $request){
+        $request->validate([
+            'name' => 'required'
+        ]);
+        $user = User::find($request->user_id);
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        if($request->hasFile('iamge')){
+            $requestedimage = $request->file('image');
+            $imagename = time().$requestedimage->GetClientOriginalName();
+            $path = public_path('images');
+            $requestedimage->move($path,$imagename);
+            $user->image = $path.'/'.$imagename;
+        }
+        $user->save();
+        Toastr::success('User Details Updated','Operation Success');
+        return redirect()->back();
+    }
+
+    public function updatePassword(Request $request){
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_password'=> 'required|same:new_password'
+        ]);
+        $user = User::find(Auth::user()->id);
+        // dd($request);
+        if(!Hash::check($request->old_password, $user->password)){
+            Toastr::error("Old password does not match","Password Change Error");
+            return redirect()->back();
+        }
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+        Toastr::success("Password Changed Successfully","Updated");
+        return redirect()->back();
     }
 }

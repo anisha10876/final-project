@@ -86,6 +86,82 @@
                                             </div>
                                         @endif
                                     </p>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <h4>Update Profile</h4>
+                                        </div>
+                                        <div class="col-12">
+                                            <form action="{{route('updateProfile')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label>Name</label>
+                                                        <input type="text" class="form-control" name="name" value="{{Auth::user()->name}}">
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <label>Email</label>
+                                                        <input type="text" class="form-control" name="email" value="{{Auth::user()->email}}" disabled>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <label>Phone</label>
+                                                        <input type="text" class="form-control" name="phone" value="{{Auth::user()->phone}}">
+                                                    </div>
+                                                    <div class="col-6 text-right" style="padding-top:30px">
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <h4>Change Password</h4>
+                                        </div>
+                                        <div class="col-12">
+                                            <form action="{{route('updatePassword')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label>Old Password</label>
+                                                            <input type="password" class="form-control" name="old_password" >
+                                                        </div>
+                                                        @if($errors->has('old_password'))
+                                                            <span class="text-danger">{{$errors->first('old_password')}}</span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label>New Password</label>
+                                                            <input type="password" class="form-control" name="new_password">
+                                                        </div>
+                                                        @if($errors->has('new_password'))
+                                                            <span class="text-danger">{{$errors->first('new_password')}}</span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label>Confirm Password</label>
+                                                            <input type="password" class="form-control" name="confirm_password">
+                                                        </div>
+                                                        @if($errors->has('confirm_password'))
+                                                            <span class="text-danger">{{$errors->first('confirm_password')}}</span>
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-6 text-right" style="bottom: 0">
+                                                        <button class="btn btn-primary" type="submit">Update</button>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="floatingV-tab-sell-car" role="tabpanel"
                                     aria-labelledby="floatingV-tab-2-tab">

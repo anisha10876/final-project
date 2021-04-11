@@ -180,10 +180,10 @@ img {
                         </div>
                         <div class="col-6 text-right">
                             <h4>
-                                Rs.&nbsp;<del>{{ $car->price }}</del>
-                                <span title="From resale value calculation algorithm">
+                                Rs.&nbsp;{{ $car->price }}
+                                {{-- <span title="From resale value calculation algorithm">
                                     {{$car->calculateResale()}}
-                                </span>
+                                </span> --}}
                             </h4>
                         </div>
                         <div class="preview col-12">

@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="row">
-            @foreach($cars->sortByDesc('created_at')->take(4) as $car)
+            @foreach($cars->sortByDesc('created_at')->take(3) as $car)
             <div class="col-lg-4">
                 <div class="trainer-item">
                     <div class="image-thumb">
@@ -44,9 +44,7 @@
                     </div>
                     <div class="down-content">
                             <span>
-                                <sup>Rs</sup>&nbsp;
-                                <del>{{ $car->price }}</del>
-                                {{$car->calculateResale()}}
+                                <sup>Rs</sup>&nbsp;{{ $car->price }}
                             </span>
 
                         <h4>{{ $car->name }}</h4>
@@ -75,6 +73,27 @@
     </div>
 </section>
 <!-- ***** Cars Ends ***** -->
+
+{{-- Buy Car Section --}}
+
+<!-- ***** Cars Starts ***** -->
+<section class="section" id="trainers" style="background-color: #bebecd;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Become A<em>Seller</em></h2>
+                    <img src="assets/images/line-dec.png" alt="">
+                    <p>Register in our site and sell your car to get reasonable price range.</p>
+                    <div class="text-center">
+                        <a href="{{route('userdashboard')}}" class="btn btn-primary">Sell Your Car</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{-- Buy Car Section ENd --}}
 
 <section class="section section-bg" id="schedule" style="background-image: url(assets/images/about-fullscreen-1-1920x700.jpg)">
     <div class="container">
@@ -130,7 +149,7 @@
                             <i class="fa fa-calendar"></i> {{$blog->created_at->format('Y-m-d')}} &nbsp;|&nbsp;
                         </p>
                         <p>
-                            {{ $blog->description }}
+                            {{ substr($blog->description,0,150) }}
                         </p>
                         <div class="main-button">
                             <a href="{{route('blogdetail',$blog->id)}}">Continue Reading</a>

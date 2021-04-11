@@ -39,6 +39,8 @@ Route::get('/add-to-compare/{id}','frontend\CompareController@addToCompare')->na
 Route::get('/compare_cars','frontend\CompareController@index')->name('compare_cars');
 Route::get('/remove-compare/{id}','frontend\CompareController@removeFromCompare')->name('removeFromCompare');
 
+Route::get('/calculate-resale','Frontend\HomePageController@calculateResalePage')->name('calculateResalePage');
+Route::post('/calculate-resale','Frontend\HomePageController@calculateResalePost')->name('calculateResaleSubmit');
 
 ######search#####
 Route::get('/search','backend\CarController@searchcar')->name('searchcar');
@@ -66,6 +68,9 @@ Route::group([
 
     Route::get('/dashboard','frontend\DashboardController@dashboard')->name('userdashboard');
     Route::post('/sellmycar','frontend\DashboardController@sellCar')->name('sellmycar');
+
+    Route::post('/update-profile','frontend\DashboardController@updateProfile')->name('updateProfile');
+    Route::post('/update-password','frontend\DashboardController@updatePassword')->name('updatePassword');
 });
 
 Route::group([
@@ -143,4 +148,6 @@ Route::get('/deletefaq/{id}','backend\AdminController@deletefaq')->name('deletef
     // About Page Data #########
     Route::get('/about-page','backend\BlogController@editAboutPage')->name('editAboutPage');
     Route::post('/about-page','backend\BlogController@updateAboutPage')->name('updateAboutPage');
+
+    Route::get('/user-list','backend\UserController@userList')->name('adminUserList');
 });

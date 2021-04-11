@@ -79,9 +79,7 @@
                     </div>
                     <div class="down-content">
                         <span>
-                            <sup>Rs</sup>&nbsp;
-                            <del>{{ $car->price }}</del>
-                            {{$car->calculateResale()}}
+                            <sup>Rs</sup>&nbsp;{{$car->price}}
                         </span>
 
                         <h4>{{ $car->name }}</h4>
