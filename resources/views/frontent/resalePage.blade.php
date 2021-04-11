@@ -7,7 +7,7 @@
                 <div class="cta-content">
                     <br>
                     <br>
-                    <h2>Calculate<em>Resale Value</em></h2>
+                    <h2>Calculate &nbsp; <em>Resale Value</em></h2>
                 </div>
             </div>
         </div>
