@@ -11,6 +11,8 @@ use App\Http\Controllers\Controller;
 use App\Setting;
 use App\Testomonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Brian2694\Toastr\Facades\Toastr;
 
 class HomePageController extends Controller
 {
@@ -62,10 +64,22 @@ class HomePageController extends Controller
     }
 
     public function calculateResalePage(){
-        return view('frontent.resalePage');
+        $brands = Brand::all();
+        return view('frontent.resalePage', compact('brands'));
     }
 
     public function calculateResalePost(Request $request){
-        dd($request);
+        $price = $request->price;
+        $year = $request->year;
+        $currentDate = Carbon::now();
+        $boughtDate = Carbon::createFromFormat('Y-m-d', $year.'-01-01');
+        $diff_in_months = $currentDate->diffInMonths($boughtDate);
+        $years = $diff_in_months/12;
+        $resale_value = $price*(pow((1-0.07),$years));
+        $lowResale = $resale_value - 0.1*$resale_value;
+        $highResale = $resale_value + 0.1*$resale_value;
+        $formSubmit = true;
+        $brands = Brand::all();
+        return view('frontent.resalePage', compact('lowResale','highResale', 'formSubmit','brands'));
     }
 }
