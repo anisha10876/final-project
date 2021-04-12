@@ -133,4 +133,10 @@ class BlogController extends Controller
         $reviews = Review::orderBy('created_at','desc')->get();
         return view('backend.reviewList', compact('reviews'));
     }
+
+    public function deleteReview($id){
+        $review = Review::findOrFail($id);
+        $review->delete();
+        return redirect()->back()->with('success',"Review Deleted Successfully");
+    }
 }

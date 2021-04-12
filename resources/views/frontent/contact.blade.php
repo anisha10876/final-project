@@ -25,6 +25,7 @@
             <div class="col-lg-6 col-md-6 col-xs-12">
                 <div class="contact-form section-bg" style="background-image: url(assets/images/contact-1-720x480.jpg)">
                     <form id="contact" action="{{route('postContactForm')}}" method="post">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 col-sm-12">
                                 <fieldset>

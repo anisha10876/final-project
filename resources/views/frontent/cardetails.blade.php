@@ -340,29 +340,10 @@ img {
 <div class="container">
     <h1 class="text-center mb-3">Reviews</h1>
     <div class="row">
-        @if($reviews->isNotEmpty())
-
-            @foreach($reviews as $similarcar)
-
-            <div class="col-md-12">
-                <div class="card" style="width: 18rem;">
-                    @if($similarcar->hasImage())
-                    <img class="card-img-top" src="{{ asset($similarcar->image) }}" height="250px" width="250px" alt="Card image cap">
-                    @else
-                    <img class="card-img-top" src="{{ asset('images/b.jpg') }}" height="250px" width="250px" alt="Card image cap">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $similarcar->name }}</h5>
-                        <p class="card-text">{{ $similarcar->model }}</p>
-                        <a class="btn btn-sm btn-primary" href="{{ route('cardetails',$car->id) }}">+ View Car</a></li>
-                    </div>
-                </div>
-                </div>
-
-            @endforeach
-        @endif
         <div class="col-8 offset-lg-2">
-            <form action="">
+            <form action="{{route('addreview')}}" method="post">
+                @csrf
+                <input type="hidden" value="{{$car->id}}" name="car_id">
             <div class="form-group" id="rating-ability-wrapper">
                 <label class="control-label" for="rating">
                 <h4 class="field-label-header">Give us your feedback</h4><br>
@@ -392,7 +373,7 @@ img {
                 @if($errors->has('star'))
                     <span class="text-danger">{{$errors->first('star')}}</span>
                 @endif
-                <input type="hidden" name="stars" id="rating_value">
+                <input type="hidden" name="star" id="rating_value">
             </div>
             <div class="form-group">
                 <label>Review</label>
@@ -403,7 +384,7 @@ img {
             </div>
             <div class="form-group">
                 @if(Auth::check())
-                    <button class="btn btn-submit text-right">Submit</button>
+                    <button type="submit" class="btn btn-primary text-right">Submit</button>
                 @else
                     <a href="{{route('login')}}" class="btn btn-submit text-right">Submit</a>
                     <div>
@@ -412,6 +393,31 @@ img {
                 @endif
             </div>
             </form>
+        </div>
+        <div class="col-8 offset-lg-2 mb-3">
+            @foreach($reviews as $review)
+                <div class="card p-2 mt-1">
+                    <div class="car-body ">
+                        <div class="row">
+                            <div class="col-4">
+                                <h4>{{$review->user->name}}</h4>
+                                <h5>{{$review->user->email}}</h5>
+                            </div>
+                            <div class="col-8">
+                                <div>
+                                    @for($i=0; $i<$review->star; $i++)
+                                        <i class="fa fa-star" style="color:#ffc107;"></i>&nbsp;
+                                    @endfor
+                                </div>
+                                <p style="font-size:16px">"
+                                    {{$review->review}}
+                                    "
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </div>

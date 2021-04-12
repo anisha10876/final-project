@@ -91,6 +91,7 @@ class HomePageController extends Controller
         $contact->subject = $request->subject;
         $contact->message = $request->message;
         $contact->save();
-        return redirect()->back("Message Send to Site Admin","Contact Form Submitted");
+        Toastr::success("Message Send to Site Admin","Contact Form Submitted");
+        return redirect()->back();
     }
 }
