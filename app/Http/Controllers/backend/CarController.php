@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 use App\Car;
 use App\Brand;
 use App\Http\Controllers\Controller;
+use App\Review;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -39,6 +40,18 @@ class CarController extends Controller
         if($request->max_km){
             $cars =$cars->where('km','<=',$request->max_km);
         }
+        if($request->sort_by){
+            $sort = $request->sort_by;
+            if($sort == "az"){
+                $cars = $cars->orderBy('name','asc');
+            }elseif($sort == "za"){
+                $cars = $cars->orderBy('name','desc');
+            }elseif($sort == "lh"){
+                $cars = $cars->orderBy('price','asc');
+            }elseif($sort == "hl"){
+                $cars = $cars->orderBy('price','desc');
+            }
+        }
         $cars = $cars->get();
         $searchdata = $request->all();
         $brands = Brand::all();
@@ -48,15 +61,13 @@ class CarController extends Controller
 
     public function cardetails($id){
         $car = Car::findorfail($id);
-        // dd($car->brands->id);
+        $reviews = Review::where('car_id', $car->id)->get();
         $similarcars = Car::where('brand_id',$car->brands->id)->where('id','!=',$car->id )->get();
-
-        return view('frontent.cardetails',compact('car','similarcars'));
+        return view('frontent.cardetails',compact('car','similarcars','reviews'));
     }
+
     public function buycar(){
         return 'buycarpage';
     }
-
-
 
 }

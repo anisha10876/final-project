@@ -12,4 +12,5 @@ class UserController extends Controller
         $users = User::where('role_id', '2')->orderBy('created_at','desc')->get();
         return view('backend.userList', compact('users'));
     }
+
 }

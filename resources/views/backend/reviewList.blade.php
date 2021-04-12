@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <h1>Customer List</h1>
+    <h1>Review about car from users.</h1>
     <div class="row">
         <div class="col-12">
             <table class="table">
@@ -11,25 +11,22 @@
                     <tr>
                         <th>S.N.</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Date Joined</th>
-                        <th>Action</th>
+                        <th>Car</th>
+                        <th>Star</th>
+                        <th>Review</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        @foreach($users as $user)
+                        @foreach($reviews as $review)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
+                                <td>{{$review->user->name}}</td>
+                                <td>{{$review->car->name}}</td>
+                                <td>{{$review->star}}</td>
+                                <td>{{$review->review}}</td>
                                 <td>
-                                    {{$user->name}}
-                                </td>
-                                <td>{{$user->email}}</td>
-                                <td>{{$user->phone}}</td>
-                                <td>{{$user->created_at->format('Y-m-d')}}</td>
-                                <td>
-                                    <a href="{{ route('deleteUser',$user->id) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('reviewDelete', $review->id)}}" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

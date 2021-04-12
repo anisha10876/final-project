@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Blog;
+use App\Contact;
+use App\Review;
 use App\Setting;
 
 class BlogController extends Controller
@@ -108,5 +110,27 @@ class BlogController extends Controller
     public function allAppointments(){
         $appointments = Appointment::orderBy('date','desc')->get();
         return view('backend.appointments',compact('appointments'));
+    }
+
+    public function deleteAppointment($id){
+        $appointment = Appointment::findOrFail($id);
+        $appointment->delete();
+        return redirect()->back()->with('success','Appointment Deleted Successfully');
+    }
+
+    public function contactList(){
+        $contacts = Contact::orderBy('created_at','desc')->get();
+        return view('backend.contactList',compact('contacts'));
+    }
+
+    public function deleteContact($id){
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect()->back()->with('success','Contact Message Deleted');
+    }
+
+    public function reviewList(){
+        $reviews = Review::orderBy('created_at','desc')->get();
+        return view('backend.reviewList', compact('reviews'));
     }
 }

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Appointment;
 use App\Brand;
 use App\Car;
 use App\Faq;
 use App\Http\Controllers\Controller;
+use App\Review;
+use App\User;
+use App\UserCar;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
@@ -195,8 +199,25 @@ class AdminController extends Controller
         if(File::exists($image_path)) {
             File::delete($image_path);
         }
+        Appointment::where('car_id', $car->id)->delete();
+        UserCar::where('car_id', $car->id)->delete();
+        Review::where('car_id',$car->id)->delete();
         $car->delete();
-        return redirect()->back()->with('success','product deleted successfully');
+        return redirect()->back()->with('success','Car deleted successfully');
     }
+
+    public function deleteUser($id){
+        $user = User::find($id);
+        $user_cars = UserCar::where('user_id')->get();
+        foreach($user_cars as $ucar){
+            Appointment::where('car_id', $ucar->car_id)->delete();
+            Review::where('car_id',$ucar->car_id)->delete();
+            Car::where('id',$ucar->id)->delete();
+            $ucar->delete();
+        }
+        $user->delete();
+        return redirect()->back()->with('success','User and their data deleted successfully');
+    }
+
 
 }

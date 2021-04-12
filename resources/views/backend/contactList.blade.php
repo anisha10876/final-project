@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <h1>Customer List</h1>
+    <h1>Contact Message from Users.</h1>
     <div class="row">
         <div class="col-12">
             <table class="table">
@@ -12,24 +12,22 @@
                         <th>S.N.</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Phone</th>
-                        <th>Date Joined</th>
+                        <th>Subject</th>
+                        <th>Message</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        @foreach($users as $user)
+                        @foreach($contacts as $contact)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
+                                <td>{{$contact->name}}</td>
+                                <td>{{$contact->email}}</td>
+                                <td>{{$contact->subject}}</td>
+                                <td>{{$contact->message}}</td>
                                 <td>
-                                    {{$user->name}}
-                                </td>
-                                <td>{{$user->email}}</td>
-                                <td>{{$user->phone}}</td>
-                                <td>{{$user->created_at->format('Y-m-d')}}</td>
-                                <td>
-                                    <a href="{{ route('deleteUser',$user->id) }}" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('contactDelete', $contact->id)}}" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

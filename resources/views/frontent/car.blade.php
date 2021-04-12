@@ -44,24 +44,34 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-1">
                         <div class="form-group">
-                            <label for="">Price From</label>
+                            <label for="">From</label>
                             <input type="number" class="form-control" name="price_from" placeholder="Rs.." value="{{$searchdata['price_from'] ?? ''}}">
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-1">
                         <div class="form-group">
                             <label for=""> To</label>
                             <input type="number" class="form-control" name="price_to" placeholder="Rs.." value="{{$searchdata['price_to'] ?? ''}}">
                         </div>
                     </div>
-                    <div class="col-2">
-                        <label for="">Max Kilometer</label>
-                        <input type="number" class="form-control" name="max_km" placeholder="KM" value="{{$searchdata['max_km'] ?? ''}}">
+                    <div class="col-1">
+                        <label for="">Km.</label>
+                        <input type="number" class="form-control" name="max_km" placeholder="Max KM" value="{{$searchdata['max_km'] ?? ''}}">
+                    </div>
+                    <div class="col-3">
+                        <label>Sort By:</label>
+                        <select name="sort_by" class="form-control">
+                            <option value="">Sort Options</option>
+                            <option value="az">A-Z Aplphabetical</option>
+                            <option value="za">Z-A Reverse</option>
+                            <option value="lh">Price Low-High</option>
+                            <option value="hl">Price High-Low</option>
+                        </select>
                     </div>
 
-                    <div class="col-2 text-right">
+                    <div class="col-2 mt-3 text-right">
                         <div class="main-button">
                             <button type="submit"> Filter </button>
                         </div>

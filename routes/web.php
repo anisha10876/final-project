@@ -51,7 +51,7 @@ Route::get('/carbrand/{id}','backend\CarController@carbrand')->name('carbrand');
 Route::get('/filtercars','backend\CarController@filtercars')->name('filtercars');
 
 
-
+Route::post('/contact','Frontend\HomePageController@postContactForm')->name('postContactForm');
 
 
 ############cardetail#########
@@ -71,6 +71,9 @@ Route::group([
 
     Route::post('/update-profile','frontend\DashboardController@updateProfile')->name('updateProfile');
     Route::post('/update-password','frontend\DashboardController@updatePassword')->name('updatePassword');
+
+    //Review
+    Route::post('/add-review','frontend\ReviewController@addReview')->name('addreview');
 });
 
 Route::group([
@@ -144,10 +147,19 @@ Route::get('/deletefaq/{id}','backend\AdminController@deletefaq')->name('deletef
 
     // Admin appointments
     Route::get('/admin-appointments','backend\BlogController@allAppointments')->name('admin.appointments');
+    Route::get('/delete-appointment/{id}','backend\BlogController@deleteAppointment')->name('deleteappointment');
 
     // About Page Data #########
     Route::get('/about-page','backend\BlogController@editAboutPage')->name('editAboutPage');
     Route::post('/about-page','backend\BlogController@updateAboutPage')->name('updateAboutPage');
 
     Route::get('/user-list','backend\UserController@userList')->name('adminUserList');
+    Route::get('/delete-user/{id}','backend\AdminController@deleteUser')->name('deleteUser');
+
+    Route::get('/contact-list','backend\BlogController@contactList')->name('contactList');
+    Route::get('/contact-delete/{id}','backend\BlogController@deleteContact')->name('contactDelete');
+
+    Route::get('/reviewList','backend\BlogController@reviewList')->name('reviewList');
+    Route::get('/review-delete/{id}','backend\BlogController@deleteReview')->name('reviewDelete');
+
 });

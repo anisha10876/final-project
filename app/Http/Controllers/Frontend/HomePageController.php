@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Blog;
 use App\Brand;
 use App\Car;
+use App\Contact;
 use App\Faq;
 use App\Team;
 use App\Http\Controllers\Controller;
@@ -81,5 +82,15 @@ class HomePageController extends Controller
         $formSubmit = true;
         $brands = Brand::all();
         return view('frontent.resalePage', compact('lowResale','highResale', 'formSubmit','brands'));
+    }
+
+    public function postContactForm(Request $request){
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
+        return redirect()->back("Message Send to Site Admin","Contact Form Submitted");
     }
 }

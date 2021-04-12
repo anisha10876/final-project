@@ -1,6 +1,8 @@
 @extends('frontent.layout.app')
 
 @section('css')
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 <style>
 
 body {
@@ -336,14 +338,13 @@ img {
 <hr>
 
 <div class="container">
-    <h1 class="text-center mb-3"> Similar cars from "<span class="text-uppercase">{{$car->brands->name}}</span>"</h1>
+    <h1 class="text-center mb-3">Reviews</h1>
     <div class="row">
-        @if($similarcars->isNotEmpty())
+        @if($reviews->isNotEmpty())
 
-            @if($similarcars)
-            @foreach($similarcars as $similarcar)
+            @foreach($reviews as $similarcar)
 
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="card" style="width: 18rem;">
                     @if($similarcar->hasImage())
                     <img class="card-img-top" src="{{ asset($similarcar->image) }}" height="250px" width="250px" alt="Card image cap">
@@ -359,16 +360,94 @@ img {
                 </div>
 
             @endforeach
-
-
-            @endif
-        @else
-        <div class="col-md-12 mt-3">
-            <h3 class="text-center text-danger">Sorry!!No similar products!!</h1>
-        </div>
         @endif
+        <div class="col-8 offset-lg-2">
+            <form action="">
+            <div class="form-group" id="rating-ability-wrapper">
+                <label class="control-label" for="rating">
+                <h4 class="field-label-header">Give us your feedback</h4><br>
+                <span class="field-label-info"></span>
+                <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required">
+                </label>
+                <h2 class="bold rating-header" style="display:none;">
+                <span class="selected-rating">0</span><small> / 5</small>
+                </h2>
+                <div>
+                    <button type="button" class="btnrating btn btn-default" data-attr="1" id="rating-star-1">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btnrating btn btn-default" data-attr="2" id="rating-star-2">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btnrating btn btn-default" data-attr="3" id="rating-star-3">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btnrating btn btn-default" data-attr="4" id="rating-star-4">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btnrating btn btn-default" data-attr="5" id="rating-star-5">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </button>
+                </div>
+                @if($errors->has('star'))
+                    <span class="text-danger">{{$errors->first('star')}}</span>
+                @endif
+                <input type="hidden" name="stars" id="rating_value">
+            </div>
+            <div class="form-group">
+                <label>Review</label>
+                <textarea name="review" class="form-control" rows="4"></textarea>
+                @if($errors->has('review'))
+                    <span class="text-danger">{{$errors->first('review')}}</span>
+                @endif
+            </div>
+            <div class="form-group">
+                @if(Auth::check())
+                    <button class="btn btn-submit text-right">Submit</button>
+                @else
+                    <a href="{{route('login')}}" class="btn btn-submit text-right">Submit</a>
+                    <div>
+                        <span class="text-danger">* You must be logged in to submit review.</span>
+                    </div>
+                @endif
+            </div>
+            </form>
+        </div>
     </div>
 </div>
 
 
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    	$(document).ready(function($){
+
+        $(".btnrating").on('click',(function(e) {
+
+        var previous_value = $("#selected_rating").val();
+
+        var selected_value = $(this).attr("data-attr");
+        $("#rating_value").val(selected_value);
+
+        $("#selected_rating").val(selected_value);
+
+        $(".selected-rating").empty();
+        $(".selected-rating").html(selected_value);
+
+        for (i = 1; i <= selected_value; ++i) {
+        $("#rating-star-"+i).toggleClass('btn-warning');
+        $("#rating-star-"+i).toggleClass('btn-default');
+        }
+
+        for (ix = 1; ix <= previous_value; ++ix) {
+        $("#rating-star-"+ix).toggleClass('btn-warning');
+        $("#rating-star-"+ix).toggleClass('btn-default');
+        }
+
+        }));
+
+
+    });
+
+</script>
 @endsection

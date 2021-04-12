@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <h1>About Page Data</h1>
+    <h1>All appointment from users.</h1>
     <div class="row">
         <div class="col-12">
             <table class="table">
@@ -17,6 +17,7 @@
                         <th>Date</th>
                         <th>Time</th>
                         <th>Location</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,9 @@
                                 <td>{{$appointment->date}}</td>
                                 <td>{{$appointment->time}}</td>
                                 <td>{{$appointment->location}}</td>
+                                <td>
+                                    <a href="{{route('deleteappointment', $appointment->id)}}" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tr>
